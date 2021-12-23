@@ -1,22 +1,31 @@
 module.exports = {
-  title: "vuepress-theme-reco",
-  description: 'A simple and beautiful vuepress blog theme .',
+  // 标题
+  title: "从零开始记笔记",  
+  // 描述
+  description: '2021/12/23_从0开始的学习笔记 .',
+  // 资源文件地址
   dest: 'public',
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }]
   ],
-  theme: 'reco',
+  theme: 'reco',//主题
+  // 配置
   themeConfig: {
+    // 导航栏配置
     nav: [
-      { text: 'Home', link: '/', icon: 'reco-home' },
-      { text: 'TimeLine', link: '/timeline/', icon: 'reco-date' },
-      { text: 'Docs', 
+      { text: '主页', link: '/', icon: 'reco-home' },
+      { text: '笔记', 
         icon: 'reco-message',
         items: [
-          { text: 'vuepress-reco', link: '/docs/theme-reco/' }
+          { text: 'Html', 
+          items:[
+            {text: 'Html总结', link: '/docs/Html/'}
+          ]
+        }
         ]
-      },
+      }, 
+      { text: 'TimeLine', link: '/timeline/'},//时间轴
       { text: 'Contact', 
         icon: 'reco-message',
         items: [
@@ -24,24 +33,27 @@ module.exports = {
         ]
       }
     ],
+    // 侧边栏
     sidebar: {
       '/docs/theme-reco/': [
         '',
         'theme',
         'plugin',
         'api'
-      ]
+      ],
     },  
     type: 'blog',
     // 博客设置
     blogConfig: {
       category: {
-        location: 2, // 在导航栏菜单中所占的位置，默认2
-        text: 'Category' // 默认 “分类”
+        location: 3, // 在导航栏菜单中所占的位置，默认2
+        // text: 'Category' 
+        text: '分类' 
+        // 默认 “分类”
       },
       tag: {
-        location: 3, // 在导航栏菜单中所占的位置，默认3
-        text: 'Tag' // 默认 “标签”
+        location: 4, // 在导航栏菜单中所占的位置，默认3
+        text: '标签' // 默认 “标签Tag”
       }
     },
     friendLink: [
@@ -64,36 +76,21 @@ module.exports = {
     searchMaxSuggestions: 10,
     // 自动形成侧边导航
     // sidebar: 'auto',
+    subSidebar: 'auto',//在所有页面中启用自动生成子侧边栏，原 sidebar 仍然兼容
     // 最后更新时间
     lastUpdated: 'Last Updated',
     // 作者
-    author: 'reco_luan',
+    author: 'nuo',
     // 作者头像
     authorAvatar: '/avatar.png',
     // 备案号
-    record: 'xxxx',
+    // record: 'xxxx',
     // 项目开始时间
-    startYear: '2017'
-    /**
-     * 密钥 (if your blog is private)
-     */
-
-    // keyPage: {
-    //   keys: ['your password'],
-    //   color: '#42b983',
-    //   lineColor: '#42b983'
-    // },
-
-    /**
-     * valine 设置 (if you need valine comment )
-     */
-
-    // valineConfig: {
-    //   appId: '...',// your appId
-    //   appKey: '...', // your appKey
-    // }
+    startYear: '2021/12/23'
+   
   },
   markdown: {
+    // 行数
     lineNumbers: true
   }
 }  
