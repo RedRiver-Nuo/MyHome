@@ -1,16 +1,17 @@
 ---
 title: 前端技术体系-学习路线
 date: 2021/12/24
+sticky : 1
 tags:
  - 分享
 categories:
- -  学习
+ -  学习sticky 
 ---
 # 前端技术体系
 
 # 总览
 
-![1](../../Tyimg/1.png)
+![1](../../.vuepress/public/other/1.png)
 
 ## 基础知识
 

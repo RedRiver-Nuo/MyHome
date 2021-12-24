@@ -22,6 +22,11 @@ module.exports = {
           items:[
             {text: 'Html总结', link: '/docs/Html/'}
           ]
+        },
+        { text: 'Css', 
+          items:[
+            {text: 'Css', link: '/docs/Css/00/'},
+          ]
         }
         ]
       }, 
@@ -46,18 +51,18 @@ module.exports = {
     ],
     // 侧边栏
     sidebar: {
-      '/docs/theme-reco/': [
+      '/docs/Css/00/': [
         '',
-        'theme',
-        'plugin',
-        'api'
+        'CssGj',
+        'Cssydd'
+       
       ],
     },  
     type: 'blog',
     // 博客设置
     blogConfig: {
       category: {
-        location: 3, // 在导航栏菜单中所占的位置，默认2
+        location: 4, // 在导航栏菜单中所占的位置，默认2
         // text: 'Category' 
         text: '分类' 
         // 默认 “分类”
