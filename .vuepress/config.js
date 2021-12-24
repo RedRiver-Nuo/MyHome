@@ -25,6 +25,17 @@ module.exports = {
         }
         ]
       }, 
+      { text: '分享', 
+        icon: 'reco-message',
+        items: [
+          { text: '学习资源', 
+          items:[
+            {text: '前端路线', link: '/docs/share/'}
+          ]
+        }
+        ]
+      }, 
+
       { text: 'TimeLine', link: '/timeline/'},//时间轴
       { text: 'Contact', 
         icon: 'reco-message',
@@ -51,10 +62,10 @@ module.exports = {
         text: '分类' 
         // 默认 “分类”
       },
-      tag: {
-        location: 4, // 在导航栏菜单中所占的位置，默认3
-        text: '标签' // 默认 “标签Tag”
-      }
+      // tag: {
+      //   location: 4, // 在导航栏菜单中所占的位置，默认3
+      //   text: '标签' // 默认 “标签Tag”
+      // }
     },
     friendLink: [
       {
@@ -80,9 +91,9 @@ module.exports = {
     // 最后更新时间
     lastUpdated: 'Last Updated',
     // 作者
-    author: 'nuo',
+    author: '诺同学',
     // 作者头像
-    authorAvatar: '/avatar.png',
+    authorAvatar: '/he.jpg',
     // 备案号
     // record: 'xxxx',
     // 项目开始时间
