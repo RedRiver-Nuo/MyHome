@@ -27,9 +27,15 @@ module.exports = {
           items:[
             {text: 'Css', link: '/docs/Css/00/'},
           ]
+        },
+        { text: 'Javascript', 
+          items:[
+            {text: 'Javascript', link: '/docs/JavaScript/'},
+          ]
         }
         ]
       }, 
+      
       { text: '分享', 
         icon: 'reco-message',
         items: [
@@ -56,6 +62,10 @@ module.exports = {
         'CssGj',
         'Cssydd'
        
+      ],
+      '/docs/JavaScript/': [
+        '',
+        'ES6'
       ],
     },  
     type: 'blog',
