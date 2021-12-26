@@ -51,7 +51,10 @@ module.exports = {
       { text: 'Contact', 
         icon: 'reco-message',
         items: [
-          { text: 'GitHub', link: 'https://github.com/recoluan', icon: 'reco-github' }
+          { text: 'GitHub', link: 'https://github.com/recoluan', icon: 'reco-github' },
+          { text: 'GitHub', link: ' https://github.com/EbookFoundation/free-programming-books/blob/main/books/free-programming-books-zh.md', icon: 'reco-github' },
+         
+
         ]
       }
     ],
@@ -65,7 +68,9 @@ module.exports = {
       ],
       '/docs/JavaScript/': [
         '',
-        'ES6'
+        'ES6',
+        'DOM',
+        'PC'
       ],
     },  
     type: 'blog',
