@@ -32,7 +32,13 @@ module.exports = {
           items:[
             {text: 'Javascript', link: '/docs/JavaScript/'},
           ]
+        },
+        { text: '服务器阶段', 
+          items:[
+            {text: 'Ajax', link: '/docs/aserver/'},
+          ]
         }
+
         ]
       }, 
       
