@@ -47,7 +47,12 @@ module.exports = {
         items: [
           { text: '学习资源', 
           items:[
-            {text: '前端路线', link: '/docs/share/'}
+            {text: '前端路线', link: '/docs/share/'},
+          ]
+        },
+        { text: '问题解决', 
+          items:[
+            {text: 'Git问题', link: '/docs/share/GitProblem/Git'}
           ]
         }
         ]
