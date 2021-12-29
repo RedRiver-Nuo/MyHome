@@ -33,11 +33,27 @@ module.exports = {
             {text: 'Javascript', link: '/docs/JavaScript/'},
           ]
         },
+        { text: 'JQuery', 
+        items:[
+          {text: 'JQuery', link: '/docs/JQuery/'},
+        ]
+      },
         { text: '服务器阶段', 
           items:[
             {text: 'Ajax', link: '/docs/aserver/'},
+            {text: 'Git', link: '/docs/Git/Git'}
           ]
-        }
+        },
+        { text: '微信小程序', 
+          items:[
+            {text: '微信小程序', link: '/docs/wx/'},
+          ]
+        },
+        { text: 'Vue', 
+          items:[
+            {text: 'Vue', link: '/docs/Vue/'},
+          ]
+        },
 
         ]
       }, 
