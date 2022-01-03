@@ -97,33 +97,9 @@ IcoMoon 成立于 2011 年，推出了第一个自定义图标字体生成器，
 
 ![1640333676173](../../../.vuepress/public/Cssimg/1640333676173.png)
 
-# CSS3 的新特性
+# CSS3 的其他新特性
 
-![1640333683121](../../../.vuepress/public/Cssimg/1640333683121.png)
 
-![1640333688699](../../../.vuepress/public/Cssimg/1640333688699.png)
-
-![1640333691079](../../../.vuepress/public/Cssimg/1640333691079.png)
-
-![1640333696469](../../../.vuepress/public/Cssimg/1640333696469.png)
-
-![1640333699420](../../../.vuepress/public/Cssimg/1640333699420.png)
-
-![1640333702126](../../../.vuepress/public/Cssimg/1640333702126.png)
-
-![1640333705217](../../../.vuepress/public/Cssimg/1640333705217.png)
-
-![11](../../../.vuepress/public/Cssimg/1640333708001.png)
-
-![1640333720527](../../../.vuepress/public/Cssimg/1640333720527.png)
-
-![1640333723527](../../../.vuepress/public/Cssimg/1640333723527.png)
-
-![1640333725983](../../../.vuepress/public/Cssimg/1640333725983.png)
-
-![1640333729034](../../../.vuepress/public/Cssimg/1640333729034.png)
-
-![1640333732944](../../../.vuepress/public/Cssimg/1640333732944.png)
 
 ![1640333744226](../../../.vuepress/public/Cssimg/1640333744226.png)
 

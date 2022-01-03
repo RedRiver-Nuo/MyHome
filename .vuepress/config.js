@@ -26,6 +26,8 @@ module.exports = {
         { text: 'Css', 
           items:[
             {text: 'Css', link: '/docs/Css/00/'},
+            {text: 'Css技巧', link: '/docs/Css/01/Cssqt'},
+
           ]
         },
         { text: 'Javascript', 

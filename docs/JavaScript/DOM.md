@@ -6,15 +6,15 @@ tags:
 categories:
  -  JavaScript
 ---
-# Web APIs 简介
+## Web APIs 简介
 
-## Web APIs 和 JS 基础关联性
+### Web APIs 和 JS 基础关联性
 
 ![1640511021836](../../.vuepress/public/Dom_img/1640511021836.png)
 
 ![1640513423968](../../.vuepress/public/Dom_img/1640513423968.png)
 
-## API 和 Web API
+### API 和 Web API
 
 ![1640513432599](../../.vuepress/public/Dom_img/1640513432599.png)
 
@@ -22,15 +22,71 @@ categories:
 
 ![1640513437951](../../.vuepress/public/Dom_img/1640513437951.png)
 
-# DOM
+## DOM
 
- DOM 简介
+###  DOM 简介
 
-![1640513446634](../../.vuepress/public/Dom_img/1640513446634.png)
+#### 什么是Dom？
 
-![1640513449810](../../.vuepress/public/Dom_img/1640513449810.png)
+   文档对象模型（Document Object Model，简称 DOM），是 W3C 组织推荐的处理可扩展标记语言（HTML或者XML）的标准编程接口。
 
-##   获取元素
+   W3C 已经定义了一系列的 DOM 接口，通过这些 DOM 接口可以改变网页的内容、结构和样式。
+
+#### Dom树
+
+![1641183511956](DOM.assets/1641183511956.png)
+
+### DOM 重点核心(复习)
+
+![1640513571550](../../.vuepress/public/Dom_img/1640513571550.png)
+
+![1640513574196](../../.vuepress/public/Dom_img/1640513574196.png)
+
+![1640513576715](../../.vuepress/public/Dom_img/1640513576715.png)
+
+![1640513579840](../../.vuepress/public/Dom_img/1640513579840.png)
+
+![1640513581853](../../.vuepress/public/Dom_img/1640513581853.png)
+
+![1640513583727](../../.vuepress/public/Dom_img/1640513583727.png)
+
+![1640513585539](../../.vuepress/public/Dom_img/1640513585539.png)
+
+![1640513589877](../../.vuepress/public/Dom_img/1640513589877.png)
+
+
+
+
+
+
+
+## 1.事件基础
+
+### 事件概述
+
+​		JavaScript 使我们有能力创建动态页面，而事件是可以被 JavaScript 侦测到的行为。简单理解： 触发--- 响应机制。
+​		网页中的每个元素都可以产生某些可以触发 JavaScript 的事件，
+例如，我们可以在用户点击某按钮时产生一个 事件，然后去执行某些操作。
+
+### 事件三要素->执行事件的步骤
+
+1. 事件源 （谁）                          1. 获取事件源
+
+2. 事件类型 （什么事件） --->   2. 注册事件（绑定事件）
+
+3. 事件处理程序 （做啥）           3. 添加事件处理程序（采取函数赋值形式）
+			 例：点击后隐藏
+
+    ```
+    var sp = document.querySelector('span')
+    sp.onclick = function() {
+            di.style.display = 'none'
+        }
+    ```
+    
+    
+
+## 2.获取元素
 
 ![1640513457202](../../.vuepress/public/Dom_img/1640513457202.png)
 
@@ -44,21 +100,43 @@ categories:
 
 ![1640513470146](../../.vuepress/public/Dom_img/1640513470146.png)
 
- 事件基础
+ 
 
-![1640513476372](../../.vuepress/public/Dom_img/1640513476372.png)
-
-![1640513479422](../../.vuepress/public/Dom_img/1640513479422.png)
-
-![1640513481219](../../.vuepress/public/Dom_img/1640513481219.png)
+## 3.注册事件（绑定事件）
 
 ![1640513483599](../../.vuepress/public/Dom_img/1640513483599.png)
 
-![1640513487320](../../.vuepress/public/Dom_img/1640513487320.png)
 
-##   操作元素
+
+##   4.操作元素
+
+JavaScript 的 DOM 操作可以改变网页内容、结构和样式，我们可以
+利用 DOM 操作元素来改变元素里面的内容 、属性等。                      
+注意以下都是属性
+
+![1641191072413](DOM.assets/1641191072413.png)
+
+### 改变元素内容
+
+1.起始位置到终止位置的全部内容，包括 html 标签，同时保留空格和换行
+
+```
+element.innerHTML
+```
+
+2.从起始位置到终止位置的内容, 但它去除 html 标签， 同时空格和换行也会去掉
+
+```
+element.innerText
+```
+
+
 
 ![1640513496176](../../.vuepress/public/Dom_img/1640513496176.png)
+
+### 属性的操作
+
+
 
 ![1640513498834](../../.vuepress/public/Dom_img/1640513498834.png)
 
@@ -68,9 +146,9 @@ categories:
 
 ![1640513506845](../../.vuepress/public/Dom_img/1640513506845.png)
 
-![1640513509919](../../.vuepress/public/Dom_img/1640513509919.png)
 
-##   节点操作
+
+##   5.节点操作
 
 ![1640513514576](../../.vuepress/public/Dom_img/1640513514576.png)
 
@@ -108,23 +186,7 @@ categories:
 
 ![1640513562885](../../.vuepress/public/Dom_img/1640513562885.png)
 
-# DOM 重点核心
-
-![1640513571550](../../.vuepress/public/Dom_img/1640513571550.png)
-
-![1640513574196](../../.vuepress/public/Dom_img/1640513574196.png)
-
-![1640513576715](../../.vuepress/public/Dom_img/1640513576715.png)
-
-![1640513579840](../../.vuepress/public/Dom_img/1640513579840.png)
-
-![1640513581853](../../.vuepress/public/Dom_img/1640513581853.png)
-
-![1640513583727](../../.vuepress/public/Dom_img/1640513583727.png)
-
-![1640513585539](../../.vuepress/public/Dom_img/1640513585539.png)
-
-![1640513589877](../../.vuepress/public/Dom_img/1640513589877.png)
+# 
 
 # 事件高级
 
