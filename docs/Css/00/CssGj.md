@@ -9,69 +9,11 @@ categories:
 
 # CSS 高级技巧
 
-## 1. 精灵图
 
-![1640333539014](../../../.vuepress/public/Cssimg/1640333539014.png)
 
-![1640333542340](../../../.vuepress/public/Cssimg/1640333542340.png)
 
-## 1.2 精灵图（sprites）的使用
 
-![1640333549380](../../../.vuepress/public/Cssimg/1640333549380.png)
 
-## 2. 字体图标
-
-![1640333555502](../../../.vuepress/public/Cssimg/1640333555502.png)
-
-![1640333559982](../../../.vuepress/public/Cssimg/1640333559982.png)
-
-### 2.3 字体图标的下载
-
-推荐下载网站：
-
- icomoon 字库 http##//icomoon.io 推荐指数 ★★★★★
-
-IcoMoon 成立于 2011 年，推出了第一个自定义图标字体生成器，它允许用户选择所需要的图标，使它们成一字型。该字库内容种类繁多，非常全面，唯一的遗憾是国外服务器，打开网速较慢。
-
- 阿里 iconfont 字库 http##//www.iconfont.cn/ 推荐指数 ★★★★★
-
-这个是阿里妈妈 M2UX 的一个 iconfont 字体图标字库，包含了淘宝图标库和阿里妈妈图标库。可以使用 AI制作图标上传生成。 重点是，免费！
-
-![1640333570209](../../../.vuepress/public/Cssimg/1640333570209.png)
-
-![1640333573942](../../../.vuepress/public/Cssimg/1640333573942.png)
-
-![1640333576233](../../../.vuepress/public/Cssimg/1640333576233.png)
-
-![1640333579664](../../../.vuepress/public/Cssimg/1640333579664.png)
-
-![1640333583232](../../../.vuepress/public/Cssimg/1640333583232.png)
-
-![1640333586320](../../../.vuepress/public/Cssimg/1640333586320.png)
-
-## 3. CSS 三角
-
-![1640333593928](../../../.vuepress/public/Cssimg/1640333593928.png)
-
-## 4. CSS 用户界面样式
-
-![1640333599383](../../../.vuepress/public/Cssimg/1640333599383.png)
-
-![1640333603330](../../../.vuepress/public/Cssimg/1640333603330.png)
-
-![1640333605862](../../../.vuepress/public/Cssimg/1640333605862.png)
-
-![1640333608078](../../../.vuepress/public/Cssimg/1640333608078.png)
-
-## 5. vertical-align 属性应用
-
-![1640333616568](../../../.vuepress/public/Cssimg/1640333616568.png)
-
-![1640333621593](../../../.vuepress/public/Cssimg/1640333621593.png)
-
-![1640333624415](../../../.vuepress/public/Cssimg/1640333624415.png)
-
-![1640333628312](../../../.vuepress/public/Cssimg/1640333628312.png)
 
 ## 6. 溢出的文字省略号显示
 
@@ -93,7 +35,7 @@ IcoMoon 成立于 2011 年，推出了第一个自定义图标字体生成器，
 
 ![1640333668151](../../../.vuepress/public/Cssimg/1640333668151.png)
 
-![1640333672527](../../../.vuepress/public/Cssimg/1640333672527.png)
+
 
 ![1640333676173](../../../.vuepress/public/Cssimg/1640333676173.png)
 
@@ -107,9 +49,7 @@ IcoMoon 成立于 2011 年，推出了第一个自定义图标字体生成器，
 
 ![1640333752566](../../../.vuepress/public/Cssimg/1640333752566.png)
 
-![1640333756045](../../../.vuepress/public/Cssimg/1640333756045.png)
 
-![1640333759212](../../../.vuepress/public/Cssimg/1640333759212.png)
 
 # CSS3 2D转换
 
