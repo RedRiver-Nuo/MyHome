@@ -15,29 +15,7 @@ categories:
 
 
 
-## 6. 溢出的文字省略号显示
 
-![1640333636272](../../../.vuepress/public/Cssimg/1640333636272.png)
-
-![1640333641347](../../../.vuepress/public/Cssimg/1640333641347.png)
-
-![1640333645029](../../../.vuepress/public/Cssimg/1640333645029.png)
-
-## 7. 常见布局技巧
-
-![1640333651674](../../../.vuepress/public/Cssimg/1640333651674.png)
-
-### 1. margin负值运用
-
-![1640333660315](../../../.vuepress/public/Cssimg/1640333660315.png)
-
-![1640333663950](../../../.vuepress/public/Cssimg/1640333663950.png)
-
-![1640333668151](../../../.vuepress/public/Cssimg/1640333668151.png)
-
-
-
-![1640333676173](../../../.vuepress/public/Cssimg/1640333676173.png)
 
 # CSS3 的其他新特性
 
