@@ -1,11 +1,233 @@
 ---
 title: Css移动端
-date: 2021/12/24
+date: 2021/1/11
 tags:
  - 笔记
 categories:
  -  Css
 ---
+
+## 1.字体图标
+
+
+
+## 2.2D转换
+
+转换（transform）是CSS3中具有颠覆性的特征之一，可以实现元素的位移、旋转、缩放等效果。
+
+- 移动：translate
+- 旋转：rotate
+- 缩放：scal
+
+改变盒子在平面内的形态（位移、旋转、缩放）
+
+![1640333770823](../../../.vuepress/public/Cssimg/1640333770823.png)
+
+
+
+### 位移 translate
+
+2D移动是2D转换里面的一种功能，可以改变元素在页面中的位置，类似定位。
+
+![1641904570418](./Cssydd.assets/1641904570418.png)
+
+
+
+语法
+
+```
+transform: translate(水平方向的位置,垂直方向的位置);
+transform: translate(100px,50px);
+
+单独设置某个方向的移动距离：translateX() & translateY()
+transform: translateX(x);
+transform: translateY(y);
+x,y取值（正负均可）:
+	像素单位数值
+	百分比（参照物为盒子自身尺寸）
+```
+
+
+注意：
+
+- X轴正向为右，Y轴正向为下
+- 不会影响到其他元素的位置
+- 对行内标签没有效
+-  translate()如果只给出一个值, 表示x轴方向移动距离
+  
+
+常用：
+
+​		定位居中
+
+```
+ position: absolute;
+ left: 50%;
+ top: 50%;
+ transform: translate(-50%,-50%);
+```
+
+
+
+### 旋转 rotate
+
+####  转换之旋转 rotate
+
+语法
+
+```
+transform:rotate(度数)
+```
+
+ 重点
+
+- rotate里面跟度数， 单位是 deg 比如 rotate(45deg) 
+-  角度为正时，顺时针，负时，为逆时针
+-  默认旋转的中心点是元素的中心点
+
+案例 画三角形
+
+![1641904372389](./Cssydd.assets/1641904372389.png)
+
+```
+p::before {
+ content: '';
+ position: absolute;
+ right: 20px;
+ top: 10px;
+ width: 10px;
+ height: 10px;
+ border-right: 1px solid #000;
+ border-bottom: 1px solid #000;
+ transform: rotate(45deg);
+}
+```
+
+####  转换中心点 transform-origi
+
+我们可以设置元素转换的中心点
+
+语法
+
+```
+transform-origin: x y;
+```
+
+重点
+
+- 注意后面的参数 x 和 y 用空格隔开
+-  x y 默认转换的中心点是元素的中心点 (50% 50%)
+- 还可以给x y 设置 像素 或者 方位名词 （top bottom left right center）
+
+
+
+### 缩放scale
+
+缩放，顾名思义，可以放大和缩小。 只要给元素添加上了这个属性就能控制它放大还是缩小。
+
+语法
+
+```
+transform: scale(x轴缩放倍数, y轴缩放倍数);
+一般情况下, 只为scale设置一个值, 表示x轴和y轴等比例缩放:
+transform: scale(缩放倍数);
+transform:scale(2) ：只写一个参数，第二个参数则和第一个参数一样，相当于 scale(2,2)
+
+```
+
+ 注意
+
+- 注意其中的x和y用逗号分隔
+- 缩放 值不带单位  ,1 没有缩放   , 大于1 放大 , 小于1缩小
+-  sacle缩放最大的优势：可以设置转换中心点缩放，默认以中心点缩放的，而且不影响其他盒子
+
+### 2D 转换综合写法
+
+   1.同时使用多个转换，其格式为：transform: translate() rotate() scale() ...等，
+2. 其顺序会影转换的效果。（先旋转会改变坐标轴方向）
+3. 当我们同时有位移和其他属性的时候，记得要将位移放到最
+
+
+
+## 3.渐变背景
+
+目标：使用background-image属性实现渐变背景效果
+
+- 渐变是多个颜色逐渐变化的视觉效果
+   一般用于设置盒子的背景
+
+![1641905493571](./Cssydd.assets/1641905493571.png)
+
+语法：
+
+```
+background-image:linear-gradient(
+	颜色1，
+	颜色2
+);
+
+常用： 一般情况直接写background;
+
+background: linear-gradient(red,blue);
+```
+
+
+
+# 浏览器私有前缀
+
+![1640333903581](../../../.vuepress/public/Cssimg/1640333903581.png)
+
+
+
+# CSS3 动画
+
+![1640333825856](../../../.vuepress/public/Cssimg/1640333825856.png)
+
+![1640333829944](../../../.vuepress/public/Cssimg/1640333829944.png)
+
+![1640333832780](../../../.vuepress/public/Cssimg/1640333832780.png)
+
+![1640333835704](../../../.vuepress/public/Cssimg/1640333835704.png)
+
+![1640333838653](../../../.vuepress/public/Cssimg/1640333838653.png)
+
+![1640333841816](../../../.vuepress/public/Cssimg/1640333841816.png)
+
+![1640333845221](../../../.vuepress/public/Cssimg/1640333845221.png)
+
+![1640333848121](../../../.vuepress/public/Cssimg/1640333848121.png)
+
+![1640333850702](../../../.vuepress/public/Cssimg/1640333850702.png)
+
+# CSS3 3D转换
+
+![1640333858611](../../../.vuepress/public/Cssimg/1640333858611.png)
+
+![1640333861574](../../../.vuepress/public/Cssimg/1640333861574.png)
+
+![1640333864383](../../../.vuepress/public/Cssimg/1640333864383.png)
+
+![](../../../.vuepress/public/Cssimg/1640333867306.png)
+
+![1640333873775](../../../.vuepress/public/Cssimg/1640333873775.png)
+
+![1640333877459](../../../.vuepress/public/Cssimg/1640333877459.png)
+
+![1640333881800](../../../.vuepress/public/Cssimg/1640333881800.png)
+
+![1640333885012](../../../.vuepress/public/Cssimg/1640333885012.png)
+
+![1640333887546](../../../.vuepress/public/Cssimg/1640333887546.png)
+
+![1640333891392](../../../.vuepress/public/Cssimg/1640333891392.png)
+
+![1640333893747](../../../.vuepress/public/Cssimg/1640333893747.png)
+
+![1640333896570](../../../.vuepress/public/Cssimg/1640333896570.png)
+
+![1640333900671](../../../.vuepress/public/Cssimg/1640333900671.png)
+
+
 
 # 移动WEB开发之流式布局
 

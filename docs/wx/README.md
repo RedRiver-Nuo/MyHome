@@ -7,7 +7,7 @@ categories:
  -  微信小程序
 ---
 
-# 1.小程序结构
+## 1.小程序结构
 
 
 
@@ -38,11 +38,11 @@ App.wxss 主样式
 
 
 
-## 1.1⼩程序配置⽂件
+## 2主配置⽂件
 
 ![img](../../.vuepress/public/wx/clip_image004.jpg)
 
-## 1.1.1APP.JS
+### 1.1.1APP.JS
 
 ![img](../../.vuepress/public/wx/clip_image006.jpg)
 
@@ -52,7 +52,7 @@ App.wxss 主样式
 
 
 
-## 1.1.2 APP.json([全局配置](https://developers.weixin.qq.com/miniprogram/dev/framework/config.html))
+### 1.1.2 APP.json([全局配置](https://developers.weixin.qq.com/miniprogram/dev/framework/config.html))
 
 app.json 是当前⼩程序的全局配置，包括了⼩程序的所有⻚⾯路径、界⾯表现、⽹络超时时间、底 部 tab 等。普通快速启动项⽬⾥边的 app.json 配置
 
@@ -60,7 +60,7 @@ app.json 是当前⼩程序的全局配置，包括了⼩程序的所有⻚⾯�
 
  
 
-(1)    全局Pages： 
+#### (1)    全局Pages： 
 
 ⽤于描述当前⼩程序所有⻚⾯路径，这是为了让微信客⼾端知道当前你的⼩程序 ⻚⾯定义在哪个⽬录。
 
@@ -72,7 +72,7 @@ app.json 是当前⼩程序的全局配置，包括了⼩程序的所有⻚⾯�
 
 ![img](../../.vuepress/public/wx/clip_image012.png)
 
-(2)    Window：
+#### (2)    Window：
 
 window 字段⸺定义⼩程序所有⻚⾯的顶部背景颜⾊，⽂字颜⾊定义等。
 
@@ -82,7 +82,7 @@ window 字段⸺定义⼩程序所有⻚⾯的顶部背景颜⾊，⽂字颜⾊�
 
  
 
-(3)⻚⾯配置page.json 
+#### (3)⻚⾯配置page.json 
 
 ⼀个⼩程序应⽤程序会包括最基本的两种配置⽂件。
 
@@ -104,7 +104,7 @@ window 字段⸺定义⼩程序所有⻚⾯的顶部背景颜⾊，⽂字颜⾊�
 
  
 
-(3)    Tabbar: 底部选项
+#### (3)    Tabbar: 底部选项
 
  
 
@@ -131,7 +131,7 @@ window 字段⸺定义⼩程序所有⻚⾯的顶部背景颜⾊，⽂字颜⾊�
 
  
 
-# 2.数据类型
+## 2.数据类型
 
  
 
@@ -141,7 +141,7 @@ window 字段⸺定义⼩程序所有⻚⾯的顶部背景颜⾊，⽂字颜⾊�
 
  
 
-# 3.数据绑定
+## 3.数据绑定
 
 页面所有数据都来自于JS中Page
 
@@ -192,7 +192,7 @@ data：
 
  
 
-# 4.[⼩程序事件的绑定](https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.html)
+## 4.[⼩程序事件的绑定](https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.html)
 
 ⼩程序中绑定事件，通过bind关键字来实现，如 bindtap ，bindinput ，bindchange 等 
 
@@ -258,7 +258,7 @@ this.setData({
 
  
 
-# 5.列表渲染wx:for 
+## 5.列表渲染wx:for 
 
 ![img](../../.vuepress/public/wx/clip_image073.jpg)![img](../../.vuepress/public/wx/clip_image074.png)
 
@@ -308,7 +308,7 @@ Block 统一到一个目录下
 
  
 
-# 6.条件渲染
+## 6.条件渲染
 
 ![img](../../.vuepress/public/wx/clip_image102.jpg)
 
@@ -336,7 +336,7 @@ Block 统一到一个目录下
 
  
 
-# 7[.样式 WXSS](https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html)
+## 7[.样式 WXSS](https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html)
 
 WXSS( WeiXin Style Sheets )是⼀套样式语⾔，⽤于描述 WXML 的组件样式。
 
@@ -344,7 +344,7 @@ WXSS( WeiXin Style Sheets )是⼀套样式语⾔，⽤于描述 WXML 的组件�
 
  
 
-## 7.1尺寸单位
+#### 7.1尺寸单位
 
 ![img](../../.vuepress/public/wx/clip_image117.jpg)
 
@@ -356,7 +356,7 @@ WXSS( WeiXin Style Sheets )是⼀套样式语⾔，⽤于描述 WXML 的组件�
 
  
 
-## 7.2样式导入
+#### 7.2样式导入
 
 ![img](../../.vuepress/public/wx/clip_image121.jpg)
 
@@ -398,7 +398,7 @@ wxss中直接就⽀持，样式导⼊功能。
 
 ![img](../../.vuepress/public/wx/clip_image140.jpg)
 
-# 8.常用[组件](https://developers.weixin.qq.com/miniprogram/dev/component/)：
+## 8.常用[组件](https://developers.weixin.qq.com/miniprogram/dev/component/)：
 
 ![img](../../.vuepress/public/wx/clip_image142.jpg)![img](../../.vuepress/public/wx/clip_image144.jpg)![img](../../.vuepress/public/wx/clip_image146.jpg)
 
@@ -406,7 +406,7 @@ wxss中直接就⽀持，样式导⼊功能。
 
  
 
-## 8.1:View(flex盒子)
+#### 8.1:View(flex盒子)
 
 ![img](../../.vuepress/public/wx/clip_image148.jpg)![img](../../.vuepress/public/wx/clip_image150.jpg)
 
@@ -420,7 +420,7 @@ wxss中直接就⽀持，样式导⼊功能。
 
 ![img](../../.vuepress/public/wx/clip_image155.jpg)
 
-## 8.2text
+#### 8.2text
 
 1.⽂本标签 
 
@@ -436,7 +436,7 @@ wxss中直接就⽀持，样式导⼊功能。
 
  
 
-## 8.3:image
+#### 8.3:image
 
 1. 图⽚标签，image组件默认宽度320px、⾼度240px 
 
@@ -456,7 +456,7 @@ mode 有效值：mode 有 13 种模式，其中 4 种是缩放模式，9种是�
 
  
 
-## 8.4 Swiper: 微信内置轮播图组件
+#### 8.4 Swiper: 微信内置轮播图组件
 
 搭配swiper-item使用
 
@@ -480,7 +480,7 @@ swiper-item：默认宽度和⾼度都是100%
 
  
 
-## 8.5. navigator 导航组件 类似超链接标签
+#### 8.5. navigator 导航组件 类似超链接标签
 
 ![img](../../.vuepress/public/wx/clip_image175.jpg)
 
@@ -526,7 +526,7 @@ img 标签仅⽀持⽹络图⽚。
 
  
 
-## 10.7:Radio：单选  checkbox复选
+#### 10.7:Radio：单选  checkbox复选
 
 可以通过 color属性来修改颜色 
 
@@ -564,7 +564,7 @@ img 标签仅⽀持⽹络图⽚。
 
  
 
-## 10.8:Button：
+#### 10.8:Button：
 
 ![img](../../.vuepress/public/wx/clip_image198.png)
 
@@ -600,7 +600,7 @@ A 2. 客服-微信 B
 
 ![img](../../.vuepress/public/wx/clip_image213.jpg)
 
-## 10.9Input：
+#### 10.9Input：
 
  
 
@@ -626,7 +626,7 @@ A 2. 客服-微信 B
 
  
 
-## 10.10. icon
+#### 10.10. icon
 
 ![img](../../.vuepress/public/wx/clip_image228.jpg)
 
@@ -734,7 +734,7 @@ Component 构造器可⽤于定义组件，调⽤ Component 构造器时可以�
 
  
 
-# 9⼩程序⽣命周期
+## 9⼩程序⽣命周期
 
 分为应⽤⽣命周期和⻚⾯⽣命周期
 
@@ -756,15 +756,15 @@ Component 构造器可⽤于定义组件，调⽤ Component 构造器时可以�
 
  
 
-# 其他
+## 其他
 
-## 全局变量
+#### 全局变量
 
 ![img](../../.vuepress/public/wx/clip_image266.png)
 
  
 
-## wx.showModal(Object object)
+#### wx.showModal(Object object)
 
 ```wx.showModal(Object object)```
 
