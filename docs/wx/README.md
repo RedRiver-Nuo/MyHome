@@ -835,3 +835,12 @@ Page({
  
 
 ```pp.globalData.g_isPlayingMusic = true;```
+
+## 微信遇见问题
+
+### 1.修改data中的数据，页面数据不改变
+
+赋值方式错误 
+
+在wx中需要使用他this.setData({ 对象：值})赋值 才会驱动数据到视图
+
