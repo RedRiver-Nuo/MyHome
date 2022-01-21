@@ -1,6 +1,6 @@
 ---
 title: Css移动端
-date: 2021/1/11
+date: 2021/1/20
 tags:
   - 笔记
 categories:
@@ -52,7 +52,7 @@ x,y取值（正负均可）:
 
 常用：
 
-​ 定位居中
+ 定位居中
 
 ```
  position: absolute;
@@ -137,7 +137,7 @@ transform:scale(2) ：只写一个参数，第二个参数则和第一个参数�
 
 ## 3. 渐变背景
 
-目标：使用 background-image 属性实现渐变背景效果
+目标：使用 background-image:linear-gradient 属性实现渐变背景效果
 
 - 渐变是多个颜色逐渐变化的视觉效果
   一般用于设置盒子的背景
@@ -173,9 +173,9 @@ background: linear-gradient( to right, red,blue);
 
 方向可取值:
 
-​ deg
+ deg
 
-​ to bottom (to +方位名词)
+ to bottom (to +方位名词)
 
 ## 浏览器私有前缀
 
@@ -193,13 +193,13 @@ background: linear-gradient( to right, red,blue);
 主要知识点
 
 1. 3D 位移: translate3d(x,y,z)
-2. 3D 旋转: rotate3d(x,y,z)
-3. 透视: perspective
+2. 透视: perspective
+3. 3D 旋转: rotate3d(x,y,z,deg)
 4. 3D 呈现 transfrom-style
 
 ### 三维坐标系
 
-​ 三维坐标系其实就是指立体空间，立体空间是由 3 个轴共同组成的。
+ 三维坐标系其实就是指立体空间，立体空间是由 3 个轴共同组成的。
 
 - x 轴：水平向右 注意： x 右边是正值，左边是负值
 - y 轴：垂直向下 注意： y 下面是正值，上面是负值
@@ -228,7 +228,7 @@ transform:translate3d(x,y,z)：其中 x、y、z 分别指要移动的轴的方�
 - 像素单位数值
 - 百分比
 
-### 2.透视 perspective
+### 2. 透视 perspective
 
 在 2D 平面产生近大远小视觉立体，但是只是效果二维的
 如果想要在网页产生 3D 效果需要透视（理解成 3D 物体投影在 2D 平面内）。
@@ -256,7 +256,7 @@ perspective: 值;
 translform:translateZ(100px)：仅仅是在 Z 轴上移动。
 有了透视，就能看到 translateZ 引起的变化了
 
-### 3D 旋转 rotate3d
+### 3. 3D 旋转 rotate3d
 
 3D 旋转指可以让元素在三维平面内沿着 x 轴，y 轴，z 轴或者自定义轴进行旋转
 
@@ -289,12 +289,21 @@ xyz 是表示旋转轴的矢量，是标示你是否希望沿着该轴旋转，�
 transform:rotate3d(1,0,0,45deg) 就是沿着 x 轴旋转 45deg
  transform:rotate3d(1,1,0,45deg) 就是沿着对角线旋转 45deg
 
-### 3D 呈现 transfrom-style
+### 4. 3D 呈现 transfrom-style
 
 - 控制子元素是否开启三维立体环境。
+
 - transform-style: flat 子元素不开启 3d 立体空间 默认的
+
 - transform-style: preserve-3d; 子元素开启立体空间
+
 - 代码写给父级，但是影响的是子盒子
+
+  ```
+  transform-style: preserve-3d
+  ```
+
+  
 
 ![1641988249683](./Cssydd.assets/1641988249683.png)
 
@@ -586,7 +595,7 @@ Flex 布局非常适合结构化布局
 
 #### align-items (单行)（添加到弹性容器）
 
-​ 添加给父元素
+ 添加给父元素
 
 取值：
 
@@ -600,9 +609,9 @@ father {
 
 #### align-content (多行) (添加到弹性容器)
 
-​ 添加给父元素 , 只有开启换行且有换行时
+ 添加给父元素 , 只有开启换行且有换行时
 
-​ 调整行对齐方式 ：
+ 调整行对齐方式 ：
 ​ 取值与 justify-content 基本相同
 
 ```
@@ -617,9 +626,9 @@ father {
 
 控制某个弹性盒子自己在侧轴的对齐方式（添加到弹性盒子）
 
-​ align-self 属性允许单个项目有与其他项目不一样的对齐方式，可覆盖 align-items 属性
+ align-self 属性允许单个项目有与其他项目不一样的对齐方式，可覆盖 align-items 属性
 
-​ 默认值为 auto，表示继承父元素的 align-items 属性，如果没有父元素，则等同于 stretch。
+ 默认值为 auto，表示继承父元素的 align-items 属性，如果没有父元素，则等同于 stretch。
 
 ```
 span:nth-child(2) {
@@ -660,7 +669,11 @@ span:nth-child(2) {
  flex-wrap: nowrap; //默认值 不换行
 ```
 
-### order 定义项目的排列顺序
+
+
+
+
+order 定义项目的排列顺序
 
 数值越小，排列越靠前，默认为 0。
 注意：和 z-index 不一样。
@@ -671,7 +684,7 @@ span:nth-child(2) {
 }
 ```
 
-### flex-flow
+flex-flow
 
 flex-flow 属性是 flex-direction 和 flex-wrap 属性的复合属
 
@@ -685,116 +698,618 @@ flex-wrap：设置子元素是否换行  align-content：设置侧轴上的�
 align-items：设置侧轴上的子元素排列方式（单行）
 flex-flow：复合属性，相当于同时设置了 flex-direction 和 flex-wra
 
-# rem 适配布局
+## 9. 移动适配
 
-![1640336919338](../../../.vuepress/public/Cssimg/1640336919338.png)
+1. 页面布局文字能否随着屏幕大小变化而变化？
+2. 流式布局和flex布局主要针对于宽度布局，那高度如何设置？
+3. 怎么样让屏幕发生变化的时候元素高度和宽度等比例缩放？
 
-## rem 基础
+px单位或百分比布局可以实现吗？
+	 px单位是绝对单位
+ 	百分比布局特点宽度自适应，高度固定
+适配方案
+	rem
 
-![1640336924668](../../../.vuepress/public/Cssimg/1640336924668.png)
+​	vw/vh
 
-## 媒体查询
+目标：实现在不同宽度设备中等比缩放的网页效果
 
-![1640336932034](../../../.vuepress/public/Cssimg/1640336932034.png)
+rem ： 目前多数企业在用的解决方案
+vw / vh：未来的解决方案
 
-![1640336935047](../../../.vuepress/public/Cssimg/1640336935047.png)
+### rem 
 
-![1640336937567](../../../.vuepress/public/Cssimg/1640336937567.png)
+rem (root em)是一个相对单位，类似于em，em是父元素字体大小。
 
-![1640336941096](../../../.vuepress/public/Cssimg/1640336941096.png)
+不同的是rem的基准是相对于html元素的字体大小,1rem = 1倍HTML字号大小.
 
-![1640336943311](../../../.vuepress/public/Cssimg/1640336943311.png)
+比如，根元素（html）设置font-size=12px; 非根元素设置width:2rem; 则换成px表示就是24px。
 
-![1640336945680](../../../.vuepress/public/Cssimg/1640336945680.png)
+rem的优势：
 
-![1640336949578](../../../.vuepress/public/Cssimg/1640336949578.png)
+​		父元素文字大小可能不一致， 但是整个页面只有一个html，可以很好来控制整个页面的元素大小.
+​	 	屏幕宽度不同，网页元素尺寸不同（等比缩放）
 
-![1640336951982](../../../.vuepress/public/Cssimg/1640336951982.png)
+```
+/* 根html 为 12px */
+html {
+ font-size: 12px;
+}
+/* 此时 div 的字体大小就是 24px */ 
+div {
+ font-size: 2rem;
+}
+```
 
-![1640336954311](../../../.vuepress/public/Cssimg/1640336954311.png)
+### vw / vh
 
-![1640336957969](../../../.vuepress/public/Cssimg/1640336957969.png)
+相对单位
 
-## Less 基础
+- 相对视口的尺寸计算结果
 
-![1640336963172](../../../.vuepress/public/Cssimg/1640336963172.png)
+ vw：viewport width
 
-![1640336965313](../../../.vuepress/public/Cssimg/1640336965313.png)
+- 1vw = 1/100视口宽度
 
-![1640336969046](../../../.vuepress/public/Cssimg/1640336969046.png)
+ vh：viewport height (基本不用，只用在设置全屏)
 
-![1640336971653](../../../.vuepress/public/Cssimg/1640336971653.png)
+- 1vh = 1/100视口高度
 
-![1640336974312](../../../.vuepress/public/Cssimg/1640336974312.png)
 
-![1640336978451](../../../.vuepress/public/Cssimg/1640336978451.png)
 
-![1640336980870](../../../.vuepress/public/Cssimg/1640336980870.png)
+vw单位尺寸
+1. 确定设计稿对应的vw尺寸 （1/100视口高度）
 
-![1640336982956](../../../.vuepress/public/Cssimg/1640336982956.png)
+  查看设计稿宽度 → 确定参考设备高度 (视口高度) → 确定vw尺寸 （1/100 视口高度）
 
-![1640336985906](../../../.vuepress/public/Cssimg/1640336985906.png)
+2. vw单位的尺寸 = px单位数值 / ( 1/100 视口高度 )
 
-![1640336988323](../../../.vuepress/public/Cssimg/1640336988323.png)
 
-![1640336991917](../../../.vuepress/public/Cssimg/1640336991917.png)
 
-![1640336996308](../../../.vuepress/public/Cssimg/1640336996308.png)
+思考：开发中，会不会vw和vh混用呢？
+Ø 不会。
+Ø vh是1/100视口高度，全面屏视口高度尺寸大，如果混用可能会导致盒子变形
 
-## rem 适配方案
 
-![1640337003510](../../../.vuepress/public/Cssimg/1640337003510.png)
 
-![1640337006040](../../../.vuepress/public/Cssimg/1640337006040.png)
+### 媒体查询
 
-![1640337008092](../../../.vuepress/public/Cssimg/1640337008092.png)
+什么是媒体查询
 
-![1640337012280](../../../.vuepress/public/Cssimg/1640337012280.png)
+媒体查询（Media Query）是CSS3新语法。
+ 使用 @media 查询，可以针对不同的媒体类型定义不同的样式
+ @media 可以针对不同的屏幕尺寸设置不同的样式
+ 当你重置浏览器大小的过程中，页面也会根据浏览器的宽度和高度重新渲染页面
+ 目前针对很多苹果手机、Android手机，平板等设备都用得到多媒体查询
 
-![1640337015495](../../../.vuepress/public/Cssimg/1640337015495.png)
 
-![1640337018243](../../../.vuepress/public/Cssimg/1640337018243.png)
 
-![1640337020571](../../../.vuepress/public/Cssimg/1640337020571.png)
+媒体查询能够检测视口的宽度，然后编写差异化的 CSS 样式
+当某个条件成立, 执行对应的CSS样式
 
-# 响应式布局
+语法规范
 
-## 响应式开发
+```
+@media 媒体类型 关键字 (媒体特性) {
+	 选择器{
+ 		css属性
+ 	  }
+}	
 
-![1640337028104](../../../.vuepress/public/Cssimg/1640337028104.png)
+// 关键字 and not only
+```
 
-![1640337030042](../../../.vuepress/public/Cssimg/1640337030042.png)
+1. 媒体类型
+
+将不同的终端设备划分成不同的类型，称为媒体类型
+
+![1642669730907](./Cssydd.assets/1642669730907.png)
+
+​	2.关键字
+
+关键字将媒体类型或多个媒体特性连接到一起做为媒体查询的条件。
+
+and：可以将多个媒体特性连接到一起，相当于“且”的意思。
+not： 排除某个媒体类型，相当于“非”的意思，可以省略。
+only：指定某个特定的媒体类型，可以省略。
+
+​	3.媒体特性
+
+每种媒体类型都具体各自不同的特性，根据不同媒体类型的媒体特性设置不同的展示风格。
+
+注意他们要加小括号包含
+
+![1642669760430](./Cssydd.assets/1642669760430.png)
+
+
+
+外链式CSS引入
+
+```
+<link rel="stylesheet" media=" 媒体类型 关键字 (媒体特性)" herf="xx.css">
+```
+
+
+
+应用:
+
+ 媒体查询+rem实现元素动态大小变化:
+
+rem单位是跟着html来走的，有了rem页面元素可以设置不同大小尺寸
+媒体查询可以根据不同设备宽度来修改样式
+媒体查询+rem 就可以实现不同设备宽度，实现页面元素大小的动态变化
+
+检测了3个视口，分别设置了根字号，有什么弊端吗？
+ 	答：手机设备多，屏幕尺寸不一，视口不仅仅有这3个
+
+### rem 适配
+
+目标:
+
+​	 让一些不能等比自适应的元素，达到当设备尺寸发生改变的时候，等比例适配当前设备。
+
+
+
+ 方案:
+
+1. 按照设计稿与设备宽度的比例，（通过媒体查询）动态计算并设置 html 根标签的 font-size 大小；
+
+2. CSS 中，设计稿元素的宽、高、相对位置等取值，按照同等比例换算为 rem 为单位的值；
+
+
+
+rem 实际开发适配方案:
+
+​	简洁高效的rem适配方案flexible.js
+
+​	使用flexible.js配合rem实现在不同宽度的设备中，网页元素尺寸等比缩放效果
+
+​	flexible.js是手淘开发出的一个用来适配移动端的js框架。
+​	核心原理就是根据不同的视口宽度给网页中html根节点设置不同的font-size。
+
+
+
+目前rem布局方案中，将网页等分成10份， HTML标签的字号为视口宽度的 1/10
+
+​	先导入js
+
+```
+<script src="./js/flexible.js" ></script>
+```
+
+1. 确定设计稿对应的设备的HTML标签字号
+   查看设计稿宽度 → 确定参考设备宽度(视口宽度) → 确定基准根字号（1/10视口宽度）
+
+   设计稿宽度(750--2倍图)/2/10 rem =>得出根字号  @rootsize:37.5rem ;
+
+2. rem单位的尺寸
+N * 37.5 = 68 → N = 68 / 37.5
+rem单位的尺寸 = px单位数值 / 基准根字号
+
+3. 元素大小取值方法
+
+    页面元素的rem值 = 页面元素值（px） / @rootsize
+
+
+
+rem中精灵图的使用
+
+只需要把px转换为rem 
+
+```
+span{
+		  width: (40 / @rootsize);
+          height: (42 / @rootsize);
+          background: url('../images/jd_icons.png') no-repeat;
+          background-size: (250/ @rootsize) (200/ @rootsize);
+          background-position: 0 (-50/ @rootsize);
+}
+```
+
+
+
+
+
+github地址：https://github.com/amfe/lib-flexible
+
+
+
+### Less 基础
+
+维护 css 的弊端
+
+- CSS 是一门非程序式语言，没有变量、函数、SCOPE（作用域）等概念。
+- CSS 需要书写大量看似没有逻辑的代码，CSS 冗余度是比较高的。
+- 不方便维护及扩展，不利于复用。
+- CSS 没有很好的计算能力
+- 非前端开发工程师来讲，往往会因为缺少 CSS 编写经验而很难写出组织良好且易于维护的 CSS 代码项目。
+
+
+
+Less 介绍
+
+Less （Leaner Style Sheets 的缩写） 是一门 CSS 扩展语言，也称为CSS预处理器。
+做为 CSS 的一种形式的扩展，它并没有减少 CSS 的功能，而是在现有的 CSS 语法上，为CSS加入程序式语言的特性。
+它在 CSS 的语法基础之上，引入了变量，Mixin（混入），运算以及函数等功能，大大简化了 CSS 的编写，并且降低了 CSS 的维护成本，就像它的名称所说的那样，Less 可以让我们用更少的代码做更多的事情。
+
+注意：浏览器不识别Less代码，目前阶段，网页要引入对应的CSS文件。
+
+Less中文网址： http://lesscss.cn/
+常见的CSS预处理器：Sass、Less、Stylus
+
+Less 安装（注意如果使用vscode无需安装less）
+
+① 安装nodejs，可选择版本(8.0)，网址：http://nodejs.cn/download/
+② 检查是否安装成功，使用cmd命令（win10 是 window +r 打开 运行输入cmd） --- 输入“ node –v ”查看版本即可
+③ 基于nodejs在线安装Less，使用cmd命令“ npm install -g less ”即可
+④ 检查是否安装成功，使用cmd命令“ lessc -v ”查看版本即
+
+
+
+Less 使用
+
+我们首先新建一个后缀名为less的文件， 在这个less文件里面书写less语句。
+
+
+
+#### 1.Less 运算
+
+任何数字、颜色或者变量都可以参与运算。
+
+就是Less提供了加（+）、减（-）、乘（*）、除（/）算术运算。
+
+```
+/*Less 里面写*/
+div {
+ witdh: 10px + 5;
+ height: 200px-100px;
+ font-size: 2px*10px;
+ // 除法 需要加括号或者. 
+ line-height: (300px/3px);
+}
+
+/*生成的css*/
+div {
+ witdh: 15px;
+ height: 100px;
+ font-size: 20px;
+ line-height:100px
+}
+
+```
+
+注意：
+
+乘号（*）和除号（/）的写法 
+
+ 运算符中间左右有个空格隔开 1px + 5
+ 对于两个不同的单位的值之间的运算，运算结果的值取第一个值的单位
+ 如果两个值之间只有一个值有单位，则运算结果就取该单位
+
+
+
+#### 2.Less 嵌套
+
+我们经常用到选择器的嵌套
+
+```
+//正常css写法
+#header .logo {
+ width: 300px;
+}
+
+//Less 嵌套写法
+#header {
+ .logo {
+ width: 300px;
+ }
+}
+
+```
+
+如果遇见 （交集|伪类|伪元素选择器）
+ & 符号，表示当前元素。
+
+```
+a:hover{
+ color:red;
+}
+Less 嵌套写法
+a{
+ &:hover{
+ color:red;
+ }
+}
+
+```
+
+
+
+####  3.Less 变量
+
+变量是指没有固定的值，可以改变的。因为我们CSS中的一些颜色和数值等经常使用。
+
+```
+@变量名:值;
+```
+
+变量命名规范
+
+必须有@为前缀
+ 不能包含特殊字符
+ 不能以数字开头
+ 大小写敏感
+
+ 变量使用规范
+
+```
+//直接使用
+@color: pink;
+body{
+ color:@color;
+}
+a:hover{
+ color:@color;
+}
+```
+
+#### 4.混入
+
+```
+.box {
+    width: 200px;
+    height: 300px;
+    background-color: skyblue;
+}
+.box1 {
+    //直接应用.box的样式
+    .box(); 
+}
+```
+
+
+
+#### 5.导入
+
+```
+// 如果引入的是less文件  可以省略后缀名
+@import "./02-less嵌套";
+@import "./base.css";
+
+或者: (不常用)
+@import url(./02-less嵌套);
+```
+
+#### 6.导出
+
+1.插件设置导出位置
+
+ 设置 → 搜索EasyLess → 在setting.json中编辑 → 添加代码（注意，必须是双引号）
+
+```
+“less.compile":{
+	"out":"../css/"
+}
+```
+
+2.Less文件第一行添加代码, 注意文件夹名称后面添加 /
+
+```
+// out: ./css/
+```
+
+值为false 时 ,表示不导出
+
+```
+// out: false  
+```
+
+
+
+Less 编译
+
+本质上，Less 包含一套自定义的语法及一个解析器，用户根据这些语法定义自己的样式规则，这些规则最终会通过解析器，编译生成对应的 CSS 文件。
+所以，我们需要把我们的 less文件，编译生成为css文件，这样我们的html页面才能使用。
+
+ vocode Less 插件
+
+Easy LESS 插件用来把less文件编译为css文件
+安装完毕插件，重新加载下 vscode。
+只要保存一下Less文件，会自动生成CSS文件
+
+
+
+## 10 BootStrap
+
+1 响应式开发原理
+
+就是使用媒体查询针对不同宽度的设备进行布局和样式的设置，从而适配不同设备的目的。
+
+![1642650256548](./Cssydd.assets/1642650256548.png)
+
+2 响应式布局容器
+
+响应式需要一个父级做为布局容器，来配合子级元素来实现变化效果
+
+原理就是在不同屏幕下，通过媒体查询来改变这个布局容器的大小，再改变里面子元素的排列方式和大小，从而实现不同屏幕下，看到不同的页面布局和样式变化。
+
+
+
+平时我们的响应式尺寸划分
+
+超小屏幕（手机，小于 768px）：设置宽度为 100%
+ 小屏幕（平板，大于等于 768px）：设置宽度为 750px
+ 中等屏幕（桌面显示器，大于等于 992px）：宽度设置为 970px
+ 大屏幕（大桌面显示器，大于等于 1200px）：宽度设置为 1170px 
+
+但是我们也可以根据实际情况自己定义划分
 
 ![1640337033471](../../../.vuepress/public/Cssimg/1640337033471.png)
 
-## Bootstrap 前端开发框架
 
-![1640337043112](../../../.vuepress/public/Cssimg/1640337043112.png)
 
-![1640337045709](../../../.vuepress/public/Cssimg/1640337045709.png)
+### 1. Bootstrap 简介
 
-![1640337049174](../../../.vuepress/public/Cssimg/1640337049174.png)
+Bootstrap 来自 Twitter（推特），是目前最受欢迎的前端框架。Bootstrap 是基于 HTML、CSS 和 JAVASCRIPT 的，它简洁灵活，使得 Web 开发更加快捷。
 
-![1640337051289](../../../.vuepress/public/Cssimg/1640337051289.png)
+中文官网：http://www.bootcss.com/
+官网：http://getbootstrap.com/
+推荐使用：http://bootstrap.css88.com/
 
-![1640337054516](../../../.vuepress/public/Cssimg/1640337054516.png)
+框架：顾名思义就是一套架构，它有一套比较完整的网页功能解决方案，而且控制权在框架本身，有预制样式库、组件和插件。使用者要按照框架所规定的某种规范进行开发。
 
-![1640337057237](../../../.vuepress/public/Cssimg/1640337057237.png)
 
-![1640337059515](../../../.vuepress/public/Cssimg/1640337059515.png)
 
-![1640337061480](../../../.vuepress/public/Cssimg/1640337061480.png)
+优点
 
-## Bootstrap 栅格系统
+标准化的html+css编码规范
 
-![1640337069011](../../../.vuepress/public/Cssimg/1640337069011.png)
+- 提供了一套简洁、直观、强悍的组件
+- 有自己的生态圈，不断的更新迭代
+- 让开发更简单，提高了开发的效率
 
-![1640337072553](../../../.vuepress/public/Cssimg/1640337072553.png)
 
-![1640337078980](../../../.vuepress/public/Cssimg/1640337078980.png)
 
-![1640337081814](../../../.vuepress/public/Cssimg/1640337081814.png)
+### 2 Bootstrap 使用
 
-![1640337091326](../../../.vuepress/public/Cssimg/1640337091326.png)
+#### 步骤
 
-![1640337095779](../../../.vuepress/public/Cssimg/1640337095779.png)
+下载   https://www.bootcss.com/
+
+使用
+
+1. 引入： BootStrap提供的CSS代码
+
+```
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+```
+
+2. 调用类：使用BootStrap提供的样式
+
+   ​	container：响应式布局版心类等待
+
+   
+
+   
+
+#### 1.Bootstrap 栅格系统
+
+![1642670284247](./Cssydd.assets/1642670284247.png)
+
+
+
+栅格系统简介
+
+栅格系统英文为“grid systems”,也有人翻译为“网格系统”，它是指将页面布局划分为等宽的列，然后通过列数的定义来模块化页面布局。
+Bootstrap 提供了一套响应式、移动设备优先的流式栅格系统，随着屏幕或视口（viewport）尺寸的增加，系统会自动分为最多12列。
+
+
+
+1.栅格选项参数
+
+Bootstrap 需要为页面内容和栅格系统包裹一个 .container 容器，它提供了两个作此用处的类。
+
+(1).container 类
+
+响应式布局的容器 固定宽度
+ 大屏 ( >=1200px) 宽度定为 1170px
+ 中屏 ( >=992px) 宽度定为 970px
+ 小屏 ( >=768px) 宽度定为 750px
+ 超小屏 (100%
+
+(2).container-fluid 类
+
+流式布局容器 百分百宽度
+ 占据全部视口（viewport）的容器
+
+注意: 
+1. container类自带间距15px;
+2. row类自带间距-15px
+
+
+
+2.分别使用.row类名和 .col类名定义栅格布局的行和列。
+
+栅格系统用于通过一系列的行（row）与列（column）的组合来创建页面布局，你的内容就可以放入这些创建好的布局中
+
+![1642670553102](./Cssydd.assets/1642670553102.png)
+
+按照不同屏幕划分为1~12 等份
+
+- 行（row） 可以去除父容器作用15px的边距
+- xs-extra small：超小； sm-small：小； md-medium：中等； lg-large：大；
+- 列（column）大于 12，多余的“列（column）”所在的元素将被作为一个整体另起一行排列
+- 每一列默认有左右15像素的 padding
+- 可以同时为一列指定多个设备的类名，以便划分不同份数 例如 class="col-md-4 col-sm-6"
+
+
+
+3.列嵌套
+
+栅格系统内置的栅格系统将内容再次嵌套。简单理解就是一个列内再分成若干份小列。我们可以通过添加一个新的 .row 元素和一系列 .col-sm-* 元素到已经存在的 .col-sm-* 元素内。
+
+![1642650638430](./Cssydd.assets/1642650638430.png)
+
+```
+<!-- 列嵌套 -->
+ <div class="col-sm-4">
+ <div class="row">
+ <div class="col-sm-6">小列</div>
+ <div class="col-sm-6">小列</div>
+ </div>
+</div>
+```
+
+列偏移
+
+使用 .col-md-offset-* 类可以将列向右侧偏移。这些类实际是通过使用 * 选择器为当前元素增加了左侧的边距（margin）。
+
+![1642651679097](./Cssydd.assets/1642651679097.png)
+
+```
+ <!-- 列偏移 -->
+ <div class="row">
+ <div class="col-lg-4">1</div>
+ <div class="col-lg-4 col-lg-offset-4">2</div>
+ </div>
+```
+
+列排序
+
+通过使用 .col-md-push-* 和 .col-md-pull-* 类就可以很容易的改变列（column）的顺序。
+
+![1642651695684](./Cssydd.assets/1642651695684.png)
+
+```
+<!-- 列排序 -->
+ <div class="row">
+ <div class="col-lg-4 col-lg-push-8">左侧</div>
+ <div class="col-lg-8 col-lg-pull-4">右侧</div>
+ </div>
+```
+
+
+
+响应式工具
+
+为了加快对移动设备友好的页面开发工作，利用媒体查询功能，并使用这些工具类可以方便的针对不同设备展示或隐藏页面内容。
+
+![1642651721664](./Cssydd.assets/1642651721664.png)
+
+#### 2.组件， 插件
+
+添加类：
+
+​	表格-----为任意 `<table>` 标签添加 `.table` 类可以为其赋予基本的样式
+
+​	等等全局Css样式
+
+组件：
+
+​	复制代码--修改代码
+
+js插件：
+
+​	引入js
+
+​	复制代码
