@@ -63,7 +63,7 @@ module.exports = {
     // 侧边栏
     sidebar: {
       '/docs/Css/00/': ['', 'Cssydd'],
-      '/docs/JavaScript/': ['', 'ES6', 'DOM', 'PC']
+      '/docs/JavaScript/': ['', 'DOM', 'ES6']
     },
     type: 'blog',
     // 博客设置
@@ -115,4 +115,4 @@ module.exports = {
     // 行数
     lineNumbers: true
   }
-}
+};
