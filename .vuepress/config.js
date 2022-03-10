@@ -63,7 +63,7 @@ module.exports = {
     // 侧边栏
     sidebar: {
       '/docs/Css/00/': ['', 'Cssydd'],
-      '/docs/JavaScript/': ['', 'DOM', 'ES6']
+      '/docs/JavaScript/': ['', 'WebApi', 'ES6']
     },
     type: 'blog',
     // 博客设置

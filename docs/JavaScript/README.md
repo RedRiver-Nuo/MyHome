@@ -363,7 +363,7 @@ var Age = 21.3747;  // 小数
   // 1.八进制数字序列范围：0~7
  var num1 = 07;   // 对应十进制的7
  var num2 = 019;  // 对应十进制的19
- var num3 = 08;   // 对应十进制的8
+ var num3 = 06;   // 对应十进制的6
   // 2.十六进制数字序列范围：0~9以及A~F
  var num = 0xA;   
 
@@ -553,7 +553,7 @@ console.log('pink老师' + age + '岁啦');  // pink老师18岁啦
 
 
 
-#### 字符串补充
+##### **字符串补充**
 
 **字符串的不可变**
 
@@ -1903,6 +1903,14 @@ for (var i = 1; i <= 5; i++) {
 
 ## 七. 作用域
 
+全局作用域：在函数外声明的变量
+
+局部作用域：在函数中声明的变量
+
+块级作用域：在{}中声明的变量
+
+
+
 ### **作用域概述**
 
 通常来说，一段程序代码中所用到的名字并不总是有效和可用的，而限定这个名字的可用性的代码范围就是这个名字的**作用域**。作用域的使用提高了程序逻辑的局部性，增强了程序的可靠性，减少了名字冲突。
@@ -2545,6 +2553,7 @@ alert(resNum);          // 27
 
 ```
  function sb(num1,num2,fn){
+ 	//这里fn称为回调函数
     num1 += 10;
     num2 += 20;
     //函数类型判断
@@ -3452,7 +3461,7 @@ arr.splice(arr.indexOf(obj), 1) //再删除
 
 #### **(4) 数组转换为字符串**
 
-![1644829597190](./README.assets/1644829597190.png)
+
 
 ##### 10.toString() 把数组转换为字符串，并返回结果。
 
@@ -3669,7 +3678,9 @@ var now = Date.now();
 
 
 
-#### 2.根据位置返回字符（重点）
+#### 2.字符串提取
+
+可以直接使用下标
 
 #####  .charAt() 返回在指定位置的字符。
 
@@ -3679,34 +3690,15 @@ var now = Date.now();
         // console.log(res);
 ```
 
- 也可以直接使用下标
-
-
-
-#### 3.字符串操作方法
-
-![1644829721998](./README.assets/1644829721998.png)
-
-
-
-#####  .concat() 连接字符串。 
+##### .substr(开始位置,个数) 方法可在字符串中抽取从 start 下标开始的指定数目的字符。
 
 ```
- // let str1 = 'abc';
-        // let str2 = 'def';
-        // let strNew = str1.concat(str2);
-        // console.log(strNew, str1, str2);
-```
-
-##### .substr() 方法可在字符串中抽取从 start 下标开始的指定数目的字符。
-
-```
- // let str = 'abcdefgabc';
+	 // let str = 'abcdefgabc';
         // let res = str.substr(3,4); //从下标为3的地方开始,截取4个
         // console.log(res);
 ```
 
-##### .substring() 方法用于提取字符串中介于两个指定下标之间的字符。
+##### .substring(开始位置,结束位置) 方法用于提取字符串中介于两个指定下标之间的字符。
 
 ```
  // let str = 'abcdefgabc';
@@ -3714,12 +3706,29 @@ var now = Date.now();
         // console.log(res);
 ```
 
-##### .slice() 方法可提取字符串的某个部分，并以新的字符串返回被提取的部分。
+##### .slice(开始位置，结束位置) 方法可提取字符串的某个部分，并以新的字符串返回被提取的部分。
 
 ```
  // let str = 'abcdefgabc';
         // let strNew = str.slice(3,6); //从下标为3的地方开始,到下标为6的地方停止,不包含6.
         // console.log(strNew,str);
+```
+
+##### 
+
+
+
+#### 3.字符串操作方法
+
+
+
+#####  .concat(str1,str2...) 连接字符串。 
+
+```
+ // let str1 = 'abc';
+        // let str2 = 'def';
+        // let strNew = str1.concat(str2);
+        // console.log(strNew, str1, str2);
 ```
 
 #####  5.replace() 替换字符串中的字符
@@ -3730,10 +3739,6 @@ var now = Date.now();
 // console.log(strNew, str);
        
 ```
-
-
-
-
 
 
 
