@@ -133,7 +133,7 @@ obj.xx
 
 **在原型对象上，有一个属性 constructor 这个属性指向 Person 构造函数**
 
-![1646134154191](./Js高级.assets/1646134154191.png)
+![1646134154191](./JsHighClass.assets/1646134154191.png)
 
 #### 操作原型对象
 
@@ -599,7 +599,7 @@ console.log(Function.__proto__ === Function.prototype)
 
 ### 7.完整的原型链
 
-![1646135565503](Js高级.assets/1646135565503.png)
+![1646135565503](./JsHighClass.assets/1646135565503.png)
 
 ​        默认：
 

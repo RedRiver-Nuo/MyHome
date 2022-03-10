@@ -27,8 +27,12 @@ module.exports = {
               { text: 'Css技巧', link: '/docs/Css/01/Cssqt' }
             ]
           },
-          { text: 'Javascript', items: [{ text: 'Javascript', link: '/docs/JavaScript/' }] },
-          { text: 'JQuery', items: [{ text: 'JQuery', link: '/docs/JQuery/' }] },
+          { text: 'Javascript', items: [
+            { text: 'Javascript', link: '/docs/JavaScript/' },
+            { text: 'JQuery', link: '/docs/JQuery/' }
+          ]
+          },
+          // { text: 'JQuery', items: [{ text: 'JQuery', link: '/docs/JQuery/' }] },
           {
             text: '服务器阶段',
             items: [
@@ -63,7 +67,7 @@ module.exports = {
     // 侧边栏
     sidebar: {
       '/docs/Css/00/': ['', 'Cssydd'],
-      '/docs/JavaScript/': ['', 'WebApi', 'ES6']
+      '/docs/JavaScript/': ['', 'WebApi', 'JsHighClass','ES6']
     },
     type: 'blog',
     // 博客设置
