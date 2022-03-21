@@ -28,16 +28,24 @@ module.exports = {
             ]
           },
           { text: 'Javascript', items: [
-            { text: 'Javascript', link: '/docs/JavaScript/' },
+            { text: 'Javascript基础', link: '/docs/JavaScript/' },
+            { text: 'WebApi', link: '/docs/JavaScript/WebApi' },
+            { text: 'Javascript高级', link: '/docs/JavaScript/JsHighClass' },
+            { text: 'Es6语法', link: '/docs/JavaScript/ES6' },
             { text: 'JQuery', link: '/docs/JQuery/' }
           ]
           },
+          { text: '插件库', items: [
+            { text: 'Echarts', link: '/docs/plugin/Echarts/' }
+          ] 
+          },
+          
           // { text: 'JQuery', items: [{ text: 'JQuery', link: '/docs/JQuery/' }] },
           {
             text: '服务器阶段',
             items: [
-              { text: 'Ajax', link: '/docs/aserver/' },
-              { text: 'Git', link: '/docs/Git/Git' }
+              { text: 'Ajax', link: '/docs/aserver/AJAX/' },
+              { text: 'Git', link: '/docs/aserver/Git/Git' }
             ]
           },
           { text: '微信小程序', items: [{ text: '微信小程序', link: '/docs/wx/' }] },
@@ -59,15 +67,15 @@ module.exports = {
         text: 'Contact',
         icon: 'reco-message',
         items: [
-          { text: 'GitHub', link: 'https://github.com/recoluan', icon: 'reco-github' },
-          { text: 'GitHub', link: ' https://github.com/EbookFoundation/free-programming-books/blob/main/books/free-programming-books-zh.md', icon: 'reco-github' }
+          { text: 'GitHub', link: 'https://github.com/RedRiver-Nuo/MyHome', icon: 'reco-github' },
         ]
       }
     ],
     // 侧边栏
     sidebar: {
       '/docs/Css/00/': ['', 'Cssydd'],
-      '/docs/JavaScript/': ['', 'WebApi', 'JsHighClass','ES6']
+      // '/docs/JavaScript/': ['', 'WebApi', 'JsHighClass','ES6']
+      // '/docs/JavaScript/': ['', 'WebApi']
     },
     type: 'blog',
     // 博客设置
