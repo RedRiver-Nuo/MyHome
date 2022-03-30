@@ -49,7 +49,12 @@ module.exports = {
             ]
           },
           { text: '微信小程序', items: [{ text: '微信小程序', link: '/docs/wx/' }] },
-          { text: 'Vue', items: [{ text: 'Vue', link: '/docs/Vue/' }] }
+          { text: 'Vue', items: [{ text: 'Vue', link: '/docs/Vue/' }] },
+
+          { text: '项目经验', items: [
+            { text: 'proexpce', link: '/docs/projectexperience/' }
+          ] 
+          },
         ]
       },
 
