@@ -9,10 +9,59 @@ categories:
 
 ## ES6新语法
 
+### ES6简介
+
+名词解释-ES6
+
+ES6 既是一个历史名词，也是一个泛指
+5.1版之后的JavaScript的下一代标准，涵盖了ES2015、ES2016、ES2017等等
+ES2015是正式名称、指的是 2015 年发布的正式版本的语言标准
+
+
+
+兼容性
+
+除了极个别低版本的浏览器，兼容性很好
+可以通过 Babel 进行转码，兼容较低版本浏览器
+
+
+
+与我何干
+
+咱们之后的代码、工作中看到的代码，会大量使用
+经历了初期的语法熟悉 + 适应 之后，相信大家
+
+
+
+---
+
+
+
+
+
 ## 1、let_VS_var
 
+**作用**
+
 var 是最早在 JS 定义变量的语法
- 而 let es6新增的定义变量的语法，目的就是为了取替 var
+而 let es6新增的定义变量的语法，目的就是为了取替 var
+
+**特点(注意点)**
+
+>var 可以重复声明变量      let 不可以重复声明变量
+>
+>var 存在变量声明前置      let不存在变量声明前置
+>
+>var没有块级作用域 	      let有块级作用域
+
+**语法**
+
+```;;
+//语法与变量声明相同
+let a='a';
+```
+
+**实例**
 
 1. var 可以重复声明变量，而 let 则不可以
 
@@ -23,8 +72,6 @@ var a = 'hello'
 let b = 10
 let b = 20          // 报错：
 ```
-
-
 
 2. var 定义的变量，访问语句可以在定义之前； let声明的变量必须 遵循先定义后使用
 
@@ -39,12 +86,8 @@ let b = 20          // 报错：
         console.log(b);
 ```
 
-
-
 3. var没有块级作用域限制的，let 是有块级作用域限制的。
    块级作用域，只要是语法中带有{}都会形成一个块级作用域
-
-
 
 ```
        let b = 10
@@ -62,29 +105,39 @@ let b = 20          // 报错：
         console.log(c);     // 受块级作用域的限制 ，无法访问 c
 ```
 
-
-
-**总结：**
-
-​	**以后声明变量使用 let 就对了；**
+**总结：以后声明变量使用 let 就对了；**
 
 
 
 ## 2、const
 
- const 也是用于定义变量的, 但是这种 const 定义的变量很特殊
- 语法：const 变量名 = 值
+**作用**
+
+ 声明一个块级作用域的本地常量
+
+ **特点(注意点)**
+
+> 具有let的特点
+>
+> 声明必须赋初始值；
+>
+> 值不允许修改：
+>
+> > 基本数据类型无法重新赋值
+> >
+> > 引用类型(对象，数组...)，可以更改内容
+> >
+> > **注：**不能改的是栈
+
+**语法**
+
+`const 变量名 = 值`
+
+标识符一般为大写（习惯）；
 
 
 
-1. 声明必须赋初始值；
-
-2. 标识符一般为大写（习惯）；
-3. 不允许重复声明；
-4. 值不允许修改；引用类型可以修改值的内容；
-5. 块儿级作用域（局部变量）；
-
-
+**实例**
 
 1. const 定义的变量的值是不允许修改，所以const定义的变量也会被称之为 常量
 
@@ -116,9 +169,320 @@ let b = 20          // 报错：
 
 
 
+
+
+
+
+## 4、模板字符串
+
+**作用**
+
+ es6新增的定义字符串的新的方式，使用反引号(``)定义
+
+**特点(注意点)**
+
+> 可以换行定义字符串
+>
+> 模板字符串，可以解释变量的值，必须 使用 ${变量} 这种格式
+
+**语法**
+
+```
+let str = `hello world`
+console.log(str);
+```
+
+
+
+**实例**
+
+```
+// 之前办法：将变量的内容嵌入到一个字符中，使用如下方式
+// let strTd = '<td>' + age + '</td>';
+
+//使用模板字符串
+let strTd = `<td>${age}</td>`;
+console.log(strTd);
+```
+
+**应用场景：**
+**当遇到字符串与变量拼接的情况使用模板字符串；**
+
+
+
+## 5、对象属性简写
+
+**作用**
+
+ES6 允许在大括号里面，直接写入变量和函数，作为对象的属性和方法。这样的书写更加简洁；
+
+**特点(注意点)**
+
+​	1.是对象的ES6写法 只能在对象中简写
+
+​	2.为对象设置和变量不同名的属性时，无法进行简写
+
+**语法**
+
+1. 变量名和属性名同名时，可以省略
+2. 方法省略掉`:function`
+
+```
+// 1.属性简写
+// 2.方法简写
+const name = 'jack'
+const age = 18
+const student = {
+  name,
+  age,
+  sayHi() {
+    console.log('你好吗?')
+  },
+}
+
+// 等同于
+/*
+  const name = 'jack'
+  const age = 18
+  const student = {
+    name:name,
+    age:age,
+    sayHi:function() {
+      console.log('你好吗?')
+    },
+  }
+ */
+
+```
+
+## ES6 - 对象属性名表达式
+
+**作用：**
+
+动态的生成对象的属性名
+
+
+
+> 对于需要动态生成的属性，可以使用属性名表达式
+
+
+
+语法：**
+
+1. 表达式写在`[]`内部即可
+
+```javascript
+// 动态生成属性名
+const pName = 'skill'
+const student = {
+  [pName]: 'jack',
+}
+
+```
+
+## ES6 - 可选链操作符
+
+> 通过可选链操作符可以更为安全的访问对象深层次的属性，而且跟安全哦
+>
+> [传送门：MDN - 可选链操作符](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining)
+
+**作用：**
+
+- 安全的访问对象深层次的属性
+- 不需要考虑这些属性是否有效
+
+**语法：**
+
+1. 访问属性：
+   1. 把`.`替换为`?.`即可
+2. 访问方法：
+   1. 把`()`替换为`?.()`即可
+
+```javascript
+// 测试数据
+const student = {
+  name: 'jack',
+  friend: {
+    name: 'rose',
+    hair: '金色',
+    sayHi() {
+      console.log('Hello')
+    },
+  },
+}
+// 1. 访问属性
+console.log(student.frend.name) // 报错
+console.log(student?.frend?.name) // undefined
+// 2. 访问方法
+student.jump?.() // undefined
+student.jump() // 报错
+student.friend?.sayHi?.() // Hello
+
+```
+
+
+
+
+
+## 6、扩展运算符
+
+**作用：**
+
+- 把对象,数组展开
+- 可以便捷的实现多个对象，数组 的合并
+- 用于获取函数的多余参数
+
+**特点(注意点)**
+
+同名属性会出现覆盖情况
+
+
+
+**语法：**
+
+  	`扩展运算符`（spread）是三个点（ ... ）。
+
+  	`...变量名`
+
+**实例**
+
+```javascript
+// 1.把对象展开
+const dog = {
+  bark: '汪汪!',
+  food: '肉骨头',
+}
+
+const sDog = {
+  name: '萨摩耶',
+  color: '白色',
+  ...dog,
+}
+console.log(sDog)// name/color/bark/food都有
+
+//2.展开数组
+let a = [1, 2, 3]
+console.log(...a);  //1，2，3
+
+//3.获取多余参数，这样就不需要使用`arguments`对象了。
+function push(array,...items){
+    arr.push(...items)
+}
+function add(x,y){
+    return x+y;
+}
+const numbers = [1,2]
+add(...numbers) //3
+```
+
+## 8、rest参数
+
+ES6 引入 rest 参数，用于获取函数的实参，用来代替 arguments；
+
+```
+// ES6 引入 rest 参数，用于获取函数的实参，用来代替 arguments；
+// ES5获取实参的方式
+function data(){
+		console.log(arguments);
+}
+data("大哥","二哥","三哥","四哥");
+// ES6的rest参数...args，rest参数必须放在最后面
+function data(...args){
+console.log(args); // fliter some every map
+}
+data("大哥","二哥","三哥","四哥");
+
+```
+
+
+
+
+
+
+
 ## 3、ES6 解构赋值
 
-ES6 允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为`解构`（Destructuring）。
+**作用：**
+
+ES6 允许按照一定模式，从**数组**和**对象**中提取值，对变量进行赋值，这被称为`解构`（Destructuring）。
+
+
+
+**1.对象的解构**
+
+**特点(注意点)**
+
+1. 可以解构赋值给同名变量
+2. 可以解构赋值给新的变量名
+3. 使用`扩展运算符 ...`可以获取剩余属性
+
+**语法：**
+
+```
+// 1. 解构赋值给属性同名变量
+const dog = {
+  name: '二哈',
+  skill: '拆家',
+}
+const { name, skill } = dog
+console.log(name) // 二哈
+
+// 2. 解构赋值给新的变量名
+const cat = {
+  name: '加菲猫',
+  skill: '喵喵叫',
+}
+// name和对象中属性对应
+// cname是新的变量名
+const { name: cname, skill: cskill } = cat
+console.log(cname) // 加菲猫
+// 3. 获取剩余属性/方法
+const bike = {
+  name: '共享单车',
+  color: '黄色',
+  price: '1元/小时',
+  voice() {
+    console.log('叮铃铃')
+  },
+}
+
+const { name, color, ...etc } = bike
+console.log(etc) // price和voice
+```
+
+**2.数组的解构**
+
+**特点(注意点)**
+
+1. 挨个取值，和数组的顺序一致
+2. 通过`,`跳过对应个元素
+3. 通过`...`获取剩余值（数组）
+
+**语法：**
+
+```
+// 测试数据
+const arr = ['西瓜', '西兰花', '西葫芦', '西红柿', '西北风']
+
+// 1. 挨个取值
+// const [f1,f2,f3,f4] = arr
+// 2. 通过逗号跳过
+// const [f1, , , , f4] = arr
+// 3. 获取剩余值
+const [f1, ...fArr] = arr
+console.log(fArr) //  ['西兰花', '西葫芦', '西红柿', '西北风']
+
+```
+
+
+
+> 对象的解构与数组有一个重要的不同。数组的元素是按次序排列的，变量的取值由它的位置决定；而对象的属性没有次序，`变量`必须与`属性`同名，才能取到正确的值。
+
+---
+
+
+
+
 
 以前，为变量赋值，只能直接指定值。
 
@@ -127,8 +491,6 @@ ES6 允许按照一定模式，从数组和对象中提取值，对变量进行�
 2.  let b = 2;
 3.  let c = 3;
 ```
-
-
 
 ES6 允许写成下面这样。
 
@@ -145,41 +507,7 @@ c //3
 
 
 
-```
-1、数组的解构赋值
-const F4 = ["大哥","二哥","三哥","四哥"];
-let [a,b,c,d] = F4;
-// 这就相当于我们声明4个变量a,b,c,d，其值分别对应"大哥","二哥","三哥","四哥"
-console.log(a + b + c + d); // 大哥二哥三哥四哥
-```
 
-
-
-```
-// 2、对象的解构赋值
-const F3 = {
-name : "大哥",
-age : 22,
-sex : "男",
-xiaopin : function(){ // 常用
-console.log("我会演小品！");
-	}
-}
-let {name,age,sex,xiaopin} = F3; // 注意解构对象这里用的是{}
-console.log(name + age + sex + xiaopin); // 大哥22男
-xiaopin(); // 此方法可以正常调用
-```
-
-解构不仅可以用于数组，还可以用于对象。
-
-```
-1.	let { foo, bar } = { foo: 'aaa', bar: 'bbb' };
-2.	foo // "aaa"
-3.	bar // "bbb"
-
-```
-
-对象的解构与数组有一个重要的不同。数组的元素是按次序排列的，变量的取值由它的位置决定；而对象的属性没有次序，`变量`必须与`属性`同名，才能取到正确的值。
 
 
 
@@ -218,91 +546,85 @@ ES6 解构赋值解构赋值允许指定默认值。
 
 
 
-## 4、模板字符串
+## ES6 - 函数参数的默认值
 
- es6新增的定义字符串的新的方式，使用反引号定义
+> ES6允许给函数的参数赋初始值；
+>
+> [传送门：阮一峰ES6-函数参数的默认值](https://es6.ruanyifeng.com/?search=%E5%8F%AF%E9%80%89%E9%93%BE&x=0&y=0#docs/function#%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E9%BB%98%E8%AE%A4%E5%80%BC)
+>
+> [传送门：MDN-默认参数值](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Default_parameters)
 
-```
- let str = `hello world`
-console.log(str);
-```
+**作用：**
 
-模板字符串的特点
+1. 设置了参数默认值之后
+2. 不传递参数会使用默认值
 
-     1. 可以换行定义字符串
-        2. 模板字符串，可以解释变量的值，必须 使用 ${变量} 这种格式
+**语法：**
 
-```
- 			let msg = `欢迎使用学生管理系统
-            1. 添加学生
-            2. 删除元素
-            3. 年龄排序
-            4. 查看学和
-            0. 退出
-            `
-            prompt(msg)
-```
+1. 使用`=默认值`进行赋值
 
-
-
-```
-        // 之前办法：将变量的内容嵌入到一个字符中，使用如下方式
-        // let strTd = '<td>' + age + '</td>';
-
-
-        let strTd = `<td>${age}</td>`;
-        console.log(strTd);
-        
-        
-```
-
-**应用场景：**
-**当遇到字符串与变量拼接的情况使用模板字符串；**
-
-
-
-## 5、简化对象和函数写法--
-
-ES6 允许在大括号里面，直接写入变量和函数，作为对象的属性和方法。这样的书写更加简洁；
-
-```
-// ES6允许在对象的大括号内直接写入变量和函数作为对象的属性和方法
-// 变量和函数
-let name = "訾博";
-let change = function(){
-console.log("活着就是为了改变世界！");
+```javascript
+function sayHi(name = '李雷') {
+  console.log(`${name} 你好！很高兴认识你`)
 }
-//创建对象
-const school = {
-// 完整写法
-// name:name,
-// change:change
-// 简化写法
-name,
-change,
-// 声明方法的简化
-say(){
-console.log("言行一致！");
-}
-}
-school.change();
-school.say();
+
+sayHi('韩梅梅') // name=韩梅梅
+sayHi() // name=李雷
 ```
+
+```
+//1. 形参初始值 具有默认值的参数, 一般位置要靠后(潜规则)
+function add(a,b,c=10) {
+return a + b + c;
+}
+let result = add(1,2);
+console.log(result); // 13
+
+//2. 与解构赋值结合
+// 注意这里参数是一个对象
+function connect({host="127.0.0.1", username,password, port}){
+console.log(host)
+console.log(username)
+console.log(password)
+console.log(port)
+}
+connect({
+host: 'atguigu.com',
+username: 'root',
+password: 'root',
+port: 3306
+})
+```
+
+
 
 
 
 ## 6、箭头函数
 
+**作用：**
+
 ES6允许使用箭头（=>）定义函数，箭头函数提供了一种更加简洁的函数书写方式，箭头函数多用于匿
 名函数的定义；
 
-箭头函数的注意点：
 
-1. 如果形参只有一个，则小括号可以省略；
-2. 函数体如果只有一条语句，则花括号可以省略，函数的返回值为该条语句的执行结果；
-3. 箭头函数 this 指向声明时所在作用域下 this 的值；(没有自己的this)
-4. 箭头函数不能作为构造函数实例化；
-5. 不能使用 arguments；
+
+> 箭头函数的语法：
+>
+> 	1. `	function`替换为`=>`
+>  	2. 如果形参只有一个，可以省略`()`
+>  	3. 函数体如果只有一条语句，可以省略`{}`，函数的返回值为该条语句的执行结果；
+> 	4. 函数体只有一行并且有`return`，`{}`和`return`需要一起省略
+>
+> 箭头函数的特性：
+>
+> 	1. 箭头函数 this 指向声明时所在作用域下 this 的值；(没有自己的this)
+> 	2. 箭头函数不能作为构造函数实例化；
+> 	3. 不能使用 arguments；
+
+> 箭头函数不会创建自己的`this`,它只会从自己的作用域链的上一层继承`this`
+>
+> 说人话：创建时`this`是谁，就是谁
 
 
 
@@ -372,6 +694,7 @@ getName1();
 getName.call(school);
 getName1.call(school);
 // 结论：箭头函数的this是静态的，始终指向函数声明时所在作用域下的this的值
+
 // 2、不能作为构造实例化对象
 // let Persion = (name,age) => {
 // this.name = name;
@@ -380,6 +703,7 @@ getName1.call(school);
 // let me = new Persion("訾博",24);
 // console.log(me);
 // 报错：Uncaught TypeError: Persion is not a constructor
+
 // 3、不能使用 arguments 变量
 // let fn = () => console.log(arguments);
 // fn(1,2,3);
@@ -388,64 +712,46 @@ getName1.call(school);
 
 
 
-## 7、ES6中函数参数的默认值
 
-ES6允许给函数的参数赋初始值；
 
-```
-//1. 形参初始值 具有默认值的参数, 一般位置要靠后(潜规则)
-function add(a,b,c=10) {
-return a + b + c;
-}
-let result = add(1,2);
-console.log(result); // 13
 
-//2. 与解构赋值结合
-// 注意这里参数是一个对象
-function connect({host="127.0.0.1", username,password, port}){
-console.log(host)
-console.log(username)
-console.log(password)
-console.log(port)
-}
-connect({
-host: 'atguigu.com',
-username: 'root',
-password: 'root',
-port: 3306
+
+
+
+
+
+## 数组方法补充
+
+
+
+> ES5中数组新增了不少的方法，用法类似，咱们来稍微看看
+>
+> [传送门:雨雀-数组新增方法](https://www.yuque.com/yanjuxilanhua/eq0c2n/ny150b)
+
+### [forEach()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
+
+
+
+将数组的每一个元素，挨个的传递给传入的回调函数
+
+回调函数会接收三个参数，分别为
+
+- `element`
+  当前元素。
+- `index`
+  当前元素的索引。
+- `array`
+  调用`findIndex`的数组。
+
+
+
+```javascript
+let foods =['西兰花','西瓜','西兰花']
+foods.forEach(v=>{
+console.log(v)
 })
+// 依次输出: 西兰花 西瓜 西兰花
 ```
-
-
-
-## 8、rest参数
-
-ES6 引入 rest 参数，用于获取函数的实参，用来代替 arguments；
-
-```
-// ES6 引入 rest 参数，用于获取函数的实参，用来代替 arguments；
-// ES5获取实参的方式
-function data(){
-		console.log(arguments);
-}
-data("大哥","二哥","三哥","四哥");
-// ES6的rest参数...args，rest参数必须放在最后面
-function data(...args){
-console.log(args); // fliter some every map
-}
-data("大哥","二哥","三哥","四哥");
-
-```
-
-
-
-
-
-
-
-
-
-### 111111_forEach 遍历数组元素
 
 ```
 // let arr = [10,20,30,40,50]
@@ -497,7 +803,62 @@ data("大哥","二哥","三哥","四哥");
 
 
 
-### 04_filter筛选数组元素
+### [map()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+
+
+
+返回一个新的数组，新数组的元素，是数组中每个元素调用一个提供的函数后返回的结果
+
+回调函数会接收三个参数，分别为
+
+- `element`
+  当前元素。
+- `index`
+  当前元素的索引。
+- `array`
+  调用`findIndex`的数组。
+
+
+
+```javascript
+let foods = ['西兰花', '西瓜']
+let newFoods = foods.map(v => {
+return v + '好好吃'
+})
+console.log(foods)
+// 输出: ['西兰花', '西瓜']
+console.log(newFoods)
+// 输出: ['西兰花好好吃', '西瓜好好吃']
+```
+
+
+
+### [filter()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+
+
+
+返回一个新的数组，新数组的元素是数组中每个元素调用一个提供的函数，根据返回值的真假决定是否保留
+
+回调函数会接收三个参数，分别为
+
+- `element`
+  当前元素。
+- `index`
+  当前元素的索引。
+- `array`
+  调用`findIndex`的数组。
+
+
+
+```javascript
+  let foods = ['西兰花', '西瓜', '花椒', '剁椒']
+  console.log(
+    foods.filter(v => {
+      return v.indexOf('西') == 0
+    })
+  )
+  // 输出: ['西兰花', '西瓜']
+```
 
 ```
 let arr = [19,7,20,5, 8,10,12]
@@ -546,7 +907,75 @@ let arr = [19,7,20,5, 8,10,12]
 
 ```
 
-### 05_some 检测数组元素
+
+
+### [every()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/every)
+
+
+
+检验数组中的每个值是否都满足回调函数的校验，都满足结果为`true`，反之为`false`
+
+回调函数会接收三个参数，分别为
+
+- `element`
+  当前元素。
+- `index`
+  当前元素的索引。
+- `array`
+  调用`findIndex`的数组。
+
+
+
+```javascript
+  let numArr = [2, 5, 6, 7, 8, 9]
+  console.log(
+    numArr.every(v => {
+      return v > 2
+    })
+  )
+  // 输出: false
+  console.log(
+    numArr.every(v => {
+      return v >= 2
+    })
+  )
+  // 输出: true
+```
+
+
+
+### [some()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/some)
+
+
+
+和`every`类似，只需要有任意一个元素满足回调函数的校验条件结果就是`true`，都不满足就是`false`
+
+回调函数会接收三个参数，分别为
+
+- `element`
+  当前元素。
+- `index`
+  当前元素的索引。
+- `array`
+  调用`findIndex`的数组。
+
+
+
+```javascript
+  let numArr = [2, 5, 6, 7, 8, 9]
+  console.log(
+    numArr.some(v => {
+      return v == 1
+    })
+  )
+  // 输出: false
+  console.log(
+    numArr.some(v => {
+      return v == 2
+    })
+  )
+  // 输出: true
+```
 
 ```
 let arr = ['刘旬凯','张子铭','东哥','晋升','赖长辉','彭鑫']
@@ -586,9 +1015,107 @@ let arr = ['刘旬凯','张子铭','东哥','晋升','赖长辉','彭鑫']
 
 
 
+### [find()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/find)
 
 
-### 02_class类
+
+返回满足提供的回调函数校验的第一个元素的值，如果都不满足，返回`undefined`
+
+回调函数会接收三个参数，分别为
+
+- `element`
+  当前元素。
+- `index`
+  当前元素的索引。
+- `array`
+  调用`findIndex`的数组。
+
+
+
+```javascript
+  let foods = ['西兰花', '西瓜', '椒盐', '剁椒']
+  console.log(
+    foods.find(v => {
+      return v.indexOf('椒') != -1
+    })
+  )
+  // 输出: 椒盐
+  console.log(
+    foods.find(v => {
+      return v.indexOf('花菜') != -1
+    })
+  )
+  // 输出: undefined
+```
+
+
+
+### [findIndex()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/findindex)
+
+
+
+返回数组中满足提供的回调函数校验的第一个元素的索引，否则返回-1
+
+回调函数会接收三个参数，分别为
+
+- `element`
+  当前元素。
+- `index`
+  当前元素的索引。
+- `array`
+  调用`findIndex`的数组。
+
+
+
+```javascript
+let foods = [
+    { name: '西兰花', color: '绿' },
+    { name: '辣椒', color: '红' },
+    { name: '花菜', color: '白' }
+  ]
+  console.log(
+    foods.findIndex(v => {
+      return v.color == '白'
+    })
+  )
+  // 输出: 2
+  console.log(
+    foods.findIndex(v => {
+      return v.color == '黄'
+    })
+  )
+  // 输出: -1
+```
+
+
+
+### [includes()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/includes)
+
+
+
+返回数组中是否存在指定的值，如果存在返回`true`，否则返回`false`
+
+
+
+```javascript
+  let foods = ['西兰花', '西瓜', '椒盐', '剁椒']
+  console.log(foods.includes('西瓜'))
+  // 输出: true
+  console.log(foods.includes('花菜'))
+  // 输出: false
+```
+
+
+
+
+
+
+
+
+
+
+
+## 02_class类
 
 ```
 // class 是 es6新增的，类
@@ -869,52 +1396,4 @@ let arr = ['刘旬凯','张子铭','东哥','晋升','赖长辉','彭鑫']
         */
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## 扩展运算符
-
-`扩展运算符`（spread）是三个点（ ... ）。
-
-ES6 引入 rest 参数（形式为`...``变量名`），用于获取函数的多余参数，这样就不需要使用`arguments`对象了。
-
-```
- var a = [1, 2, 3]
-        console.log(...a);  //1，2，3
-
-//便历数组
-for (var i of a) {
-            console.log(i);
-        }
-
-```
-
-![1640419543650](../../.vuepress/public/js_img/1640419543650.png)
-
-
-
-## Arr.forEach()
-
-![1640419590006](../../.vuepress/public/js_img/1640419590006.png)
-
-```
- var fn = [1, 2, 3, 4, 5, 6]
-        fn.forEach(item => {
-            console.log(item);
-        });
-
-```
 

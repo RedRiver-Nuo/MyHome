@@ -16,7 +16,7 @@ module.exports = {
     nav: [
       { text: '主页', link: '/', icon: 'reco-home' },
       {
-        text: '笔记',
+        text: '基础三剑客',
         icon: 'reco-message',
         items: [
           { text: 'Html', items: [{ text: 'Html总结', link: '/docs/Html/' }] },
@@ -35,21 +35,32 @@ module.exports = {
             { text: 'JQuery', link: '/docs/JQuery/' }
           ]
           },
-          { text: '插件库', items: [
-            { text: 'Echarts', link: '/docs/plugin/Echarts/' }
-          ] 
-          },
-          
-          // { text: 'JQuery', items: [{ text: 'JQuery', link: '/docs/JQuery/' }] },
+        ]
+      },
+      {
+        text: '进阶',
+        icon: 'reco-message',
+        items: [
           {
             text: '服务器阶段',
             items: [
               { text: 'Ajax', link: '/docs/aserver/AJAX/' },
-              { text: 'Git', link: '/docs/aserver/Git/Git' }
+              { text: 'Git', link: '/docs/aserver/Git/Git' },
+              { text: 'nodeJs', link: '/docs/aserver/nodeJS/' }
             ]
           },
-          { text: '微信小程序', items: [{ text: '微信小程序', link: '/docs/wx/' }] },
           { text: 'Vue', items: [{ text: 'Vue', link: '/docs/Vue/' }] },
+          { text: '微信小程序', items: [{ text: '微信小程序', link: '/docs/wx/' }] },
+        ]
+      },
+      {
+        text: '经验',
+        icon: 'reco-message',
+        items: [
+          { text: '插件的使用', items: [
+            { text: 'Echarts', link: '/docs/plugin/Echarts/' }
+          ] 
+          },
 
           { text: '项目经验', items: [
             { text: 'proexpce', link: '/docs/projectexperience/' }
@@ -86,7 +97,7 @@ module.exports = {
     // 博客设置
     blogConfig: {
       category: {
-        location: 4, // 在导航栏菜单中所占的位置，默认2
+        location: 6, // 在导航栏菜单中所占的位置，默认2
         // text: 'Category'
         text: '分类'
         // 默认 “分类”
