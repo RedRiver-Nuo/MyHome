@@ -1117,36 +1117,41 @@ let foods = [
 
 ## 02_class类
 
+>class 是 es6新增的，类
+>
+>用于对象的定义
+
 ```
-// class 是 es6新增的，类
-        // 用于对象的
-        // 1. 定义一个类
-        class Person{
+// 1. 定义一个类
+class Person{
         
-        }
+}
+```
 
-        // 2. 实例化
-        let obj = new Person()
-        console.log(obj);
+```
+ // 2. 实例化
+ let obj = new Person()
+ console.log(obj);
+```
 
-        /* 
-        小结：
+ 小结：
             类后面不需要加 小括号号
-        */
+
+​			就将类当一个新的语法来学习。
 
 
-        // 就将类当一个新的语法来学习。
 
-        /* 
-        class的本质仍然 是函数
+```
+ /* 
+class的本质仍然 是函数
         
-        function fn(){
+function fn(){
 
-        }
+ }
 
-        console.log(Object.prototype.toString.call(fn));        // '[object Function]'
-        console.log(Object.prototype.toString.call(Person));        // '[object Function]'
-         */
+console.log(Object.prototype.toString.call(fn));        // '[object Function]'
+console.log(Object.prototype.toString.call(Person));        // '[object Function]'
+*/
 
 ```
 

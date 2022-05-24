@@ -386,7 +386,6 @@ let o1 = new Poor()
 console.log(o1.money);
 ```
 
-
 小结：
     你实例化对象那一刻，构造函数 指向了哪个原型对象，
     那么你实例化出来的实例对象，上的`__proto__`就指向哪个原型对象
@@ -444,7 +443,7 @@ console.log(o.__proto__.__proto__.__proto__)    // 从实例对象起的第三�
     第四级：null
 
 构造函数上有 prototype 属性，
-非函数对象上有 __proto__，但没有 prototype 属性，只有函数 才有 prototype 这个属性
+非函数对象上有` __proto__`，但没有 prototype 属性，只有函数 才有 prototype 这个属性
 
 
 
@@ -2335,4 +2334,744 @@ function deepCopy(data){
 }
 
 ```
+
+
+
+## 八，Promise
+
+### 1.回调地狱-多层回调嵌套
+
+> 如果多个异步操作之间彼此依赖，会出现多个回调函数嵌套哦，如果嵌套的很多很多，他还有一个别的称呼---回调地狱
+
+**什么是回调地狱**
+
+- 多个异步操作之间彼此依赖的代码写法
+- 场景：1完成 执行2 > 2完成 执行3 > 3完成 执行4 >……..n-1完成 执行n
+- 形成的多个异步嵌套的写法，可以称之为回调地狱(多层回调嵌套)
+
+**目标**
+
+1. 理解多个异步操作之间彼此依赖的代码写法
+2. 了解什么是回调地狱
+
+
+
+**步骤：**
+
+1. 日常开发中这个场景并不多见，这里为了测试，咱们正好可以使用上一节调优的代码来测试：
+
+2. 调用添加狗狗方法，依次添加若干条狗狗，`下一条`狗狗需要在`上一条`狗狗添加完毕之后再添加
+
+3. 调用获取狗狗方法，在所有狗狗`添加完毕`之后，获取最终结果
+
+4. 写法1：
+
+   ```javascript
+   const {addDog,getDogs} = require('./utils/dogTool/index')
+   
+   addDog('狗狗1', () => {
+     console.log('添加1完毕')
+   })
+   addDog('狗狗2', () => {
+     console.log('添加2完毕')
+   })
+   addDog('狗狗3', () => {
+     console.log('添加3完毕')
+   })
+   addDog('狗狗4', () => {
+     console.log('添加4完毕')
+   })
+   getDogs(dogs => {
+     console.log(dogs)
+   })
+   ```
+
+5. 写法2：
+
+   ```javascript
+   addDog('狗狗1', () => {
+     console.log('添加1完毕')
+     addDog('狗狗2', () => {
+       console.log('添加2完毕')
+       addDog('狗狗3', () => {
+         console.log('添加3完毕')
+         addDog('狗狗4', () => {
+           console.log('添加4完毕')
+           getDogs(dogs => {
+             console.log(dogs)
+           })
+         })
+       })
+     })
+   })
+   ```
+
+6. 哪种写法可以实现需求？why?
+
+
+
+**分析:**
+
+1. 文件读写都是异步的操作，代码的编写顺序虽然从上往下
+
+2. 执行的结果并不一定按照这个顺序
+
+3. 如果希望这些异步操作彼此依赖，就需要用`回调函数嵌套`的写法
+
+4. 写法1执行结果:
+
+   ```
+   添加1完毕
+   添加2完毕
+   添加4完毕
+   添加3完毕
+   ```
+
+5. 写法2执行结果:
+
+   ```
+   添加1完毕
+   添加2完毕
+   添加3完毕
+   添加4完毕
+   ```
+
+   
+
+6. 咱们再来看看写法2：
+
+   1. 功能上并没有问题
+   2. 或者需要嵌套的层数很多呢？
+      1. 回调地狱.....
+
+   ```javascript
+   addDog('狗狗1', () => {
+     console.log('添加1完毕')
+     addDog('狗狗2', () => {
+       console.log('添加2完毕')
+       addDog('狗狗3', () => {
+         console.log('添加3完毕')
+         addDog('狗狗4', () => {
+           console.log('添加4完毕')
+           getDogs(dogs => {
+             console.log(dogs)
+           })
+         })
+       })
+     })
+   })
+   ```
+
+
+
+### 2.`Promise`基本使用
+
+> 如何解决回调嵌套问题呢？可以通过Promise哦
+>
+> [传送门:Mdn-promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+
+**概念**:
+
+1. `Promise`对象可以解决回调地狱的问题
+2. `Promise` 是异步编程的一种解决方案，比传统的解决方案（回调函数和事件）更合理和更强大
+3. `Promise可以理解为一个容器，里面可以编写异步程序的代码`
+4. 从语法上说，`Promise` 是一个对象，使用的使用需要 `new`  
+
+
+
+**基本使用**
+
+1. 实例化`Promise`对象并传入回调函数
+   1. `resolve`：异步执行成功的回调函数
+   2. `reject`:异步执行失败的回调函数
+2. 回调函数中可以执行任意的异步代码
+   1. 执行`成功`:调用`resolve`
+   2. 执行`失败`:调用`reject`
+3. 通过实例化的`对象`的方法即可获取执行结果：
+   1. 写法1：
+      1. `.then`:获取成功结果
+      2. `.catch`获取失败结果
+   2. 写法2：
+      1. `.then`中写2个回调函数
+         1. 回调函数1：成功的结果
+         2. 回调函数2：失败的结果
+
+```javascript
+const p = new Promise((resolve, reject) => {
+  // 任意异步代码
+  // 成功 执行 resolve 可以传递参数
+  // 失败 执行 reject 可以传递参数
+})
+// 拆分写法
+p.then(res => {
+  // 对应到 resolve
+}).catch(errRes => {
+  // 对应到 reject
+})
+
+// 都写到then里面
+p.then(
+  res => {},
+  errRes => {}
+)
+```
+
+
+
+**测试代码**:
+
+1. 这里用`setTimeout`进行模拟
+2. 通过随机数的大小来执行`成功`或者`失败`的回调
+
+```javascript
+const pro = new Promise((resolve, reject) => {
+  // 异步代码
+  setTimeout(() => {
+    const randomNum = parseInt(Math.random() * 10)
+    // 成功
+    if (randomNum >= 5) {
+      resolve(`成功！num:${randomNum}`)
+    } else {
+      // 失败
+      reject(`失败！num:${randomNum}`)
+    }
+  }, 1000)
+})
+
+// 写法1
+pro
+  .then(res => {
+    console.log('res:', res)
+  })
+  .catch(errRes => {
+    console.log('errRes:', errRes)
+  })
+
+// 写法2
+pro.then(
+  res => {
+    console.log('res:', res)
+  },
+  errRes => {
+    console.log('errRes:', errRes)
+  }
+)
+
+```
+
+**代码解析**:
+
+1. `Promise`对象实例化之后会有3种状态
+   1. 3种状态
+      1. *待定（pending）*: 
+         1. 初始状态，既没有被兑现，也没有被拒绝。
+         2. 被创建时
+      2. *已兑现（fulfilled）*: 
+         1. 意味着操作成功完成。
+         2. 执行`resolve`，可以传递`value`
+         3. 传递的参数会被`then`接收到
+      3. *已拒绝（rejected）*: 意味着操作失败。
+         1. 执行reject时,可以传递错误信息
+         2. 传递的信息会被`catch`接收
+      4. ![image-20220315213013201](https://gitee.com/westblueflower/imgs/raw/master/img/202203281727753.png)
+   2. **注意：**
+      1. 到达了最终状态之后`fulfilled`或者`rejected`之后
+      2. `promise`对象的状态不会再改变了
+   3. ![promise-state](https://gitee.com/westblueflower/imgs/raw/master/img/202203281727307.gif)
+
+
+
+#### 同步异步？
+
+- `new Promise`是同步执行的
+- 获取结果时（调用 `resolve` 触发 `then`方法时）是异步的
+- 还有一些Promise结合定时器判断打印结果的代码，涉及到了`事件循环`,`宏任务`和`微任务`，
+
+```javascript
+console.log(1);
+
+new Promise((resolve, reject) => {
+  console.log(2);
+  resolve();
+  console.log(3);
+}).then(res => {
+  console.log(4); // 这里是异步的
+})
+
+console.log(5);
+
+// 输出顺序： 1  2  3  5  4 ,因为只有 .then() 是异步的
+```
+
+
+
+### 3.`Promise`组织多个异步
+
+> 学习`Promise`的虽然引入了新的语法，但是它可以更好的组织`多个彼此依赖`的异步哦，怎么写呢？
+
+**目标**：
+
+1. 能够使用`Promise`组织多个彼此依赖的异步
+2. 了解多个`.then`之间的链式调用
+
+
+
+**语法**:
+
+1. 和回调嵌套最大的区别就是变成了`链式`调用
+2. 前一个`then`里面返回:
+   1. 字符串，会被下一个then方法接收到。(`没啥意义`)
+   2. `Promise`对象，并且调用`resolve`的时候传递了数据，数据会被下一个then接收到（`推荐玩法`）
+   3. 没有调用`resolve`，则后续的`then`不会接收到任何值（`undefined`）
+
+
+
+**测试代码**：
+
+1. 都是正确的调用
+
+```javascript
+const fs = require('fs');
+// promise 承诺
+
+let p1 = new Promise((resolve, reject) => {
+  fs.readFile('./a.txt', 'utf-8', (err, data) => {
+    err ? reject(err) : resolve(data.length);
+  });
+});
+
+let p2 = new Promise((resolve, reject) => {
+  fs.readFile('./b.txt', 'utf-8', (err, data) => {
+    err ? reject(err) : resolve(data.length);
+  });
+});
+
+let p3 = new Promise((resolve, reject) => {
+  fs.readFile('./c.txt', 'utf-8', (err, data) => {
+    err ? reject(err) : resolve(data.length);
+  });
+});
+
+p1.then(a => {
+  console.log(a);
+  return p2;
+}).then(b => {
+  console.log(b);
+  return p3;
+}).then(c => {
+  console.log(c)
+}).catch((err) => {
+  console.log(err);
+});
+```
+
+2. 掺杂错误的调用：
+   1. `catch` 方法可以统一获取错误信息
+
+```javascript
+// 成功的Promise
+function succPro() {
+  return new Promise((resolve, reject) => {
+    // 异步代码
+    setTimeout(() => {
+      resolve('success')
+    }, 1000)
+  })
+}
+
+// 失败的Promise
+function errPro() {
+  return new Promise((resolve, reject) => {
+    // 异步代码
+    setTimeout(() => {
+      reject('error')
+    }, 1000)
+  })
+}
+succPro()
+  .then(res => {
+    console.log('1-', res)
+    // return succPro()
+    return errPro()
+  })
+  .then(res => {
+    console.log('2-', res)
+    return errPro()
+  })
+  .then(res => {
+    console.log('3-', res)
+  })
+  .catch(err => {
+    console.log('err-', err)
+  })
+
+```
+
+
+
+
+
+### 4.`async`函数
+
+> Promise避免了多个异步的嵌套，代码写起来变成了链式，更j简洁的写法
+>
+> [传送门:Mdn-async函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function)
+
+**目标**:
+
+1. 掌握`async`函数的使用
+2. 能够使用`async`简写`Promise`的调用
+
+**概念**:
+
+1. async 和 await 是 ES2017 中提出来的。
+2. **异步编程的最高境界，就是根本不用关心它是不是异步。**
+3. 期不期待！！！！！
+
+**语法**：
+
+1. 用`async` 修饰 `function`
+2. `await` 只能出现在 `async` 函数内
+   - `await` 让 JS 引擎等待直到`promise`完成并返回结果
+   - let value = await promise对象;  // 要先等待`promise`对象执行完毕，才能得到结果
+   - 由于`await`需要等待`promise`执行完毕，所以await会**暂停**函数的执行，但不会影响其他同步任务
+
+```javascript
+// 更好的组织异步代码
+const fs = require('fs/promises')
+
+async function runAsync() {
+  const res1 = await fs.readFile('文件1路径')
+  const res2 = await fs.readFile('文件2路径')
+  const res3 = await fs.readFile('文件3路径')
+  console.log('res1:', res1.toString())
+  console.log('res2:', res2.toString())
+  console.log('res3:', res3.toString())
+}
+
+// 测试函数外部的代码不受影响
+console.log('top')
+// 异步函数
+runAsync()
+// 底部逻辑
+console.log('bottom')
+
+
+```
+
+
+
+**代码分析**：
+
+1. `await`等同于帮我们写了`.then`并且把`then`中的值赋值给了左边
+
+```javascript
+async function runAsync() {
+  const res1 = await fs.readFile('文件1路径')
+  console.log('res1:', res1.toString())
+  // 等同于
+  fs.readFile('文件1路径').then(res1 => {
+    console.log('res1:', res1)
+  })
+}
+```
+
+2. `async`函数内部的`await`会依次执行
+3. 对于函数外部的同步代码不会受到影响
+   1. 所以底部输出的结果是
+   2. `top`-`bottom`-`异步函数中的内容`
+
+```javascript
+// 测试函数外部的代码不受影响
+console.log('top')
+// 异步函数
+runAsync()
+// 底部逻辑
+console.log('bottom')
+```
+
+**小结**：
+
+1. `await`表达式需要写在什么修饰的函数内？
+2. `await`表达式获取到的是他后面`promise`对象哪个方法中的结果?then or catch？
+
+
+
+### 4.`async`函数的返回值
+
+> 如果有多个`async`函数如何组织执行的逻辑呢？只需要理解`async`的返回值是什么就可以啦！！
+>
+> [传送门:Mdn-async函数的返回值](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function#%E8%BF%94%E5%9B%9E%E5%80%BC)
+
+**目标**：
+
+1. 能够明确`async`函数的返回值是什么
+2. 能够利用这一特性组织更为复杂的异步逻辑
+
+
+
+**语法**
+
+1. 异步函数会默认返回一个`promise`对象
+2. 如果返回的不是`promise`对象，会被隐式的包裹到`promise`对象中
+3. 既然返回的是`promise`对象，就可以继续用`async`和`await`进行修饰，进而组织更为复杂的异步逻辑
+
+```javascript
+async function asyncFunc() {
+  console.log('异步函数')
+
+  return '返回值'
+  // 相当于
+  return new Promise((resolve, reject) => {
+    resolve('😁')
+  })
+}
+```
+
+**测试代码**：
+
+1. 测试`async`函数的返回值
+
+   ```javascript
+   async function asyncFunc() {
+     console.log('异步函数')
+   
+     return '返回值'
+   }
+   const asyncRes = asyncFunc()
+   console.log('asyncRes:', asyncRes)
+   ```
+
+   
+
+2. 测试组合多个异步
+
+   1. 下面的代码会先执行`asyncFunc1`
+   2. 再执行函数`asyncFunc2`
+
+   ```javascript
+   const fs = require('fs/promises')
+   // 异步函数1
+   async function asyncFunc1() {
+     const res1 = await fs.readFile('文件1路径')
+     const res2 = await fs.readFile('文件2路径')
+     console.log('res1:', res1)
+     console.log('res2:', res2)
+   }
+   
+   // 异步函数2
+   async function asyncFunc2() {
+     const res3 = await fs.readFile('文件3路径')
+     const res4 = await fs.readFile('文件4路径')
+     console.log('res3:', res3)
+     console.log('res4:', res4)
+   }
+   
+   async function run() {
+     // 这里只是为了更好的组织异步
+     await asyncFunc1()
+     await asyncFunc2()
+   }
+   run()
+   ```
+
+   
+
+
+
+### 5.`async`函数异常捕获
+
+> 传统`Promise`的写法中可以通过`catch`捕获错误，如果用`async`函数呢？
+>
+> [传送门:try-catch](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/try...catch)
+
+**目标**：
+
+1. 能够使用`try-catch`捕获`async`函数的异常
+
+
+
+**语法**：
+
+1. 使用`try-catch`来捕获异常
+
+   1. 可能出错的代码写在`try`中
+   2. 出错之后的逻辑写在`catch`中
+      1. 只有`try`中的代码出错才会进入`catch`中
+
+   ```javascript
+   // try - catch基本使用
+   try {
+     // 可能出错的代码
+     console.log(student)
+   } catch (error) {
+     // error 隐藏信息
+     // 出错之后希望执行的逻辑 可以省略
+     console.log('try里面出错啦！')
+     console.log('error:', error)
+   }
+   console.log('底部的代码')
+   
+   // try-catch捕获
+   // async函数 结合 try
+   async function asyncFunc() {
+     try {
+       const res2 = await fs.readFile('错误的文件路径')
+       console.log('res2:', res2.toString())
+     } catch (error) {
+       console.log('出错啦！')
+     }
+     console.log('底部的代码')
+   }
+   
+   asyncFunc()
+   ```
+
+
+
+### `Promise.all `和`Promise.race`
+
+> 如果有多个异步需要一起完成，或者只有一个完成即可，就可以使用这两个方法来搞定
+>
+> [传送门:Promise.all](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)
+>
+> [传送门:Promise.race](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/race)
+
+
+
+**作用**：
+
+1. `Promise.all`,
+   1. 传入一个`Promise`数组
+   2. 内部所有`Promise`内部都执行`resolve`回调时，他执行`resolve`回调--`then`
+   3. 内部任意一个`Promise`执行`reject`回调时，执行`reject`回调--`catch`
+   4. 通俗一点：
+      1. 等待都完成，或者第一个失败
+2. `Promise.race`
+   1. 传入一个`Promise`数组
+   2. 内部的`Promise`任意一个执行`resolve`回调时，他执行`resolve`回调--`then`
+   3. 内部任意一个`Promise`执行`reject`回调时，执行`reject`回调--`catch`
+   4. 通俗一点：
+      1. 等待第一个完成，或者失败
+
+**测试代码**:
+
+```javascript
+// 测试用 Promise
+// delay:延迟时间
+function proSuc(delay) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const randomNum = parseInt(Math.random() * 100)
+      // 打印延迟时间 和 随机结果
+      resolve(`delay-${delay}-num:${randomNum}`)
+    }, delay * 1000)
+  })
+}
+function proErr(delay) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const randomNum = parseInt(Math.random() * 100)
+      // 打印延迟时间 和 随机结果
+      reject(`delay-${delay}-num:${randomNum}`)
+    }, delay * 1000)
+  })
+}
+
+// Promise.all
+// 全部成功
+Promise.all([proSuc(1), proSuc(2), proSuc(3)])
+  .then(res => {
+    console.log('res:', res)
+  })
+  .catch(err => {
+    console.log('err:', err)
+  })
+// // 一个失败
+Promise.all([proSuc(1), proErr(2), proSuc(3)])
+  .then(res => {
+    console.log('res:', res)
+  })
+  .catch(err => {
+    console.log('err:', err)
+    // return Promise.reject('stop')
+  })
+
+// Promise.race
+// 获取第一个成功
+Promise.race([proSuc(1), proSuc(2), proSuc(3)]).then(res => {
+  console.log('res:', res)
+})
+
+// 获取第一个成功，或失败
+Promise.race([proErr(0.5), proSuc(1), proSuc(3)])
+  .then(res => {
+    console.log('res:', res)
+  })
+  .catch(err => {
+    console.log('err:', err)
+  })
+
+```
+
+
+
+### `Promise.resolve`和`Promise.reject`
+
+> 返回一个给定值解析之后的`Promise`对象
+
+**作用**:
+
+1. `Promise.resolve`：
+   1. 返回一个`已兑现(fulfilled)`状态的`Promise`对象
+   2. 并设置`value`值
+2. `Promise.reject`:
+   1. 返回一个`已拒绝(rejected)`状态的`Promise`对象
+   2. 并设置`value`值
+
+
+
+**测试代码**:
+
+```javascript
+// Promise.resolve
+// 返回一个resolved状态的Promise对象
+// 参数解析的结果
+Promise.resolve('👍👍')
+  .then(res => {
+    console.log('res:', res) // 1
+  })
+  .catch(err => {
+    console.log('err:', err) // 不执行
+  })
+
+// 类似于
+new Promise((resolve, reject) => {
+  resolve('👍👍')
+}).then(res => {
+  console.log('res:', res) // 👍👍
+})
+
+// Promise.reject
+// 返回一个rejected状态的Promise对象
+Promise.reject('😭😭')
+  .then(res => {
+    console.log('res:', res) // 不执行
+  })
+  .catch(err => {
+    console.log('err:', err) // 😭😭
+  })
+
+// 类似于
+new Promise((resolve, reject) => {
+  reject('😭😭')
+}).catch(err => {
+  console.log('err:', err) // 😭😭
+})
+
+```
+
+
+
+
 

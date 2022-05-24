@@ -754,7 +754,66 @@ Component 构造器可⽤于定义组件，调⽤ Component 构造器时可以�
 
  
 
- 
+##  二 ，云开发环境的创建与初始化
+
+今天我们就来正式的创建自己的第一个云开发项目,在创建云开发之前,有下面几个注意事项
+
+- 1,必须注册小程序后才可以开通云开发
+- 2,一个小程序可以创建两个云开发环境
+- 
+
+### 4-1,创建一个初始项目
+
+我们要开通云开发服务，必须先要进入小程序开发者工具才可以。
+![](https://img-blog.csdnimg.cn/img_convert/b3e24e88eb27a664900db49daa66a684.png)
+和创建普通小程序一样,如上图所示,需要注意的就是这里必须要填写自己的appid,不可以用测试号. appid的获取如下图所示.
+![](https://img-blog.csdnimg.cn/img_convert/43386c9a0bb79a29ecf3a9bfd6ecc436.png)
+如果你不使用自己的appid创建项目，就会出现下面的问题，所以一定要先去注册一个小程序，然后用自己的appid。
+![](https://img-blog.csdnimg.cn/20210325101008281.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpdXNoaV8xOTkw,size_16,color_FFFFFF,t_70)
+
+
+
+### 5-3，数据库的增删改查🎈
+
+#### 5-3-1，查询 get()
+
+- 传统写法
+  ![](https://img-blog.csdnimg.cn/2021011914394249.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpdXNoaV8xOTkw,size_16,color_FFFFFF,t_70)
+- ES6简洁写法
+  ![](https://img-blog.csdnimg.cn/20210119145203891.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpdXNoaV8xOTkw,size_16,color_FFFFFF,t_70)
+  推荐第二种写法
+  ![](https://img-blog.csdnimg.cn/20210119150828859.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpdXNoaV8xOTkw,size_16,color_FFFFFF,t_70)
+
+#### 5-3-2，条件查询 where()
+
+![](https://img-blog.csdnimg.cn/2021011915165530.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpdXNoaV8xOTkw,size_16,color_FFFFFF,t_70)
+
+#### 5-3-3，查询单条数据doc()
+
+doc是用来查询单条数据的。比如商品详情页。
+doc里面用到的参数就是我们数据里的_id字段
+![](https://img-blog.csdnimg.cn/20210120105842707.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpdXNoaV8xOTkw,size_16,color_FFFFFF,t_70)
+
+#### 5-3-4，添加数据 add()
+
+通过add可以实现数据的添加，
+![](https://img-blog.csdnimg.cn/2021012011072216.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpdXNoaV8xOTkw,size_16,color_FFFFFF,t_70)
+
+#### 5-3-5，更新数据update()
+
+修改数据库里已存在的数据，结合doc进行修改单条数据
+![](https://img-blog.csdnimg.cn/20210120111452950.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpdXNoaV8xOTkw,size_16,color_FFFFFF,t_70)
+
+#### 5-3-6，删除数据remove()
+
+删除数据，结合doc删除单条数据
+![](https://img-blog.csdnimg.cn/20210120111942981.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpdXNoaV8xOTkw,size_16,color_FFFFFF,t_70)
+
+
+
+
+
+
 
 ## 其他
 

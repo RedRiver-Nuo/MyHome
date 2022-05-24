@@ -3440,13 +3440,13 @@ arr.splice(arr.indexOf(obj), 1) //再删除
 ##### 7.sort() 对数组的元素进行排序 
 
 ```
-        // let arr = [10,121,13,23,220,110];
-        // //这里如果想要按照数字大小来排序,那就要传入一个回调函数告诉他是按照数字大小来排序的.
-        // arr.sort(function(a,b){
-     			  return b - a;      // 降a序
-   				 // return a - b;   // 升序
-        // });
-        // console.log(arr);
+let arr = [10,121,13,23,220,110];
+//这里如果想要按照数字大小来排序,那就要传入一个回调函数告诉他是按照数字大小来排序的.
+arr.sort(function(a,b){
+	  return b - a;      // 降a序
+	 // return a - b;   // 升序
+});
+console.log(arr);
 ```
 
 
@@ -3474,10 +3474,10 @@ arr.splice(arr.indexOf(obj), 1) //再删除
 ##### 11.join() 把数组的所有元素放入一个字符串。元素通过指定的分隔符进行分隔 
 
 ```
-       // let arr = ['张三', '李四','王五','二麻子'];
-        // let res = arr.join("|");
-        // console.log(res);
-        // console.log(typeof res);
+let arr = ['张三', '李四','王五','二麻子'];
+let res = arr.join("|");
+console.log(res);
+console.log(typeof res);
 ```
 
 
@@ -3487,27 +3487,26 @@ arr.splice(arr.indexOf(obj), 1) //再删除
 ##### 12.concat() 连接两个或更多的数组，并返回结果 
 
 ```
-
-        // 1.1 
-        // let arr1 = [10,20,30];
-        // let arr2 = [40,50,60];
-        // let arr3 = [70,80,90];
-        // let arrNew = arr1.concat(arr2,arr3);
-        // console.log(arrNew, arr1, arr2,arr3);
+// 1.1 
+// let arr1 = [10,20,30];
+// let arr2 = [40,50,60];
+ // let arr3 = [70,80,90];
+// let arrNew = arr1.concat(arr2,arr3);
+// console.log(arrNew, arr1, arr2,arr3);
         
-        // 1.2 
-        // let arr1 = [10,20,30];
-        // let arrNew = arr1.concat(40,50,60,70);
-        // console.log(arrNew, arr1);
+// 1.2 
+// let arr1 = [10,20,30];
+// let arrNew = arr1.concat(40,50,60,70);
+ // console.log(arrNew, arr1);
 ```
 
 ##### 13.slice() 从某个已有的数组返回选定的元素 
 
 ```
-       // let arr = [10,20,30,40,50,60,70,80];
-        // //let arrNew = arr.slice(2,5); //从下标为2的地方开始,到下标为5的地方结束,不包含下标为5的那个元素.
-        // let arrNew = arr.slice(2); //end没有定义,那就从start开始到末尾.
-        // console.log(arrNew, arr);
+// let arr = [10,20,30,40,50,60,70,80];
+// //let arrNew = arr.slice(2,5); //从下标为2的地方开始,到下标为5的地方结束,不包含下标为5的那个元素.
+// let arrNew = arr.slice(2); //end没有定义,那就从start开始到末尾.
+// console.log(arrNew, arr);
 ```
 
 ##### 14.valueOf() 返回数组对象的原始值 
@@ -3582,7 +3581,7 @@ arr.splice(arr.indexOf(obj), 1) //再删除
 
 ```
 // let res = Date.now(); //可以直接使用，不用先new Date()
- // console.log(res);
+// console.log(res);
 ```
 
 
