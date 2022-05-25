@@ -62,8 +62,9 @@ module.exports = {
           {
             text: 'Vue',
             items: [
-              { text: 'Vue', link: '/docs/Vue/vue/README' },
-              { text: 'Vue2', link: '/docs/Vue/vue2/vue2' }
+              { text: 'Vue', link: '/docs/Vue/vue/vue1' },
+              { text: 'Vue2', link: '/docs/Vue/vue2/vue2' },
+              { text: 'webpack', link: '/docs/Vue/webpack/webpack' }
             ]
           },
           {
@@ -81,7 +82,7 @@ module.exports = {
             items: [
               { text: 'Echarts', link: '/docs/plugin/Echarts/' },
               { text: 'dayjs', link: '/docs/plugin/dayjs/' },
-              { text: 'Echarts', link: '/docs/plugin/Echarts/' }
+              // { text: 'Echarts', link: '/docs/plugin/Echarts/' }
             ]
           },
 

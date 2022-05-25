@@ -77,6 +77,47 @@ el-table
           @current-change：页码改变后的回调函数
 ```
 
+### confirm对话框
+
+```
+ this.$confirm(
+ 'conent'，
+ 'Title'
+ )
+ .then(() => {
+     done();
+})
+ .catch(()=> {});
+```
+
+### Form  	--  resetFields()  🎈
+
+注意点：在使用close事件重置表单数据时，要注意resetFields它是重置表单数据为初次渲染的值，
+
+如果有编辑就需要特别处理
+
+```
+    // 关闭表单时的处理
+    closeEvent () {
+      // 重置表单数据为初始值（初次打开dialog弹框组件时的form表单的值），移除了校验结果
+      //  第一次打开弹框是新增时，初始值就是data中定义的form
+      // 第一次打开弹框是编辑时，初始值就是当前点击项的内容
+      this.$refs.form.resetFields()
+      // 每次关闭弹框都强行重置form数据
+      this.form = {
+        name: '', //  string  非必须    部门名称
+        code: '', //  string  非必须    部门编码，同级部门不可重复
+        manager: '', //  string  非必须    负责人名称
+        introduce: '', //  string  非必须    介绍
+        pid: '' //  string  非必须    父级部门ID，当前点击的id
+      }
+    }
+```
+
+
+
+
+
 
 
 ## cookie 持久化
@@ -536,4 +577,128 @@ _axios.interceptors.request.use(
     return Promise.reject(error)
   }
 )
+```
+
+
+
+# 兄弟组件传值🎈
+
+## 基本使用：
+
+1. Vue.prototype.bus=new Vue()      组件内：this.bus
+2. 监听：this.$bus.on("方法名",(参数1，参数2)=>{})
+3. 触发:  this.$bus.emit('方法名',实参1，实参2)
+4. 销毁监听“this.$bus.off('方法名')
+
+
+
+
+
+1. 通过兄弟组件传值打开弹框
+
+   1. **main.js中全局处理一个$bus**
+
+      Vue.prototype.$bus=new Vue()
+
+   2. **Add新增弹框组件内监听与销毁 **
+
+```Vue
+  mounted () {
+    // 监听
+    this.$bus.$on('Addshow', bol => {
+      this.isShow = bol
+    })
+  },
+  beforeDestroy () {
+    // 销毁bus
+    this.$bus.$off('Addshow')
+  }
+  
+1. **点击下拉 菜单打开弹框，TreeItem组件**
+    1. 下拉菜单绑定点击事件
+    <el-dropdown @command="commandEvent">
+      <span
+        >操作
+        <i class="el-icon-arrow-down"></i>
+      </span>
+      <template #dropdown>
+        <el-dropdown-menu>
+          <el-dropdown-item command="add">添加子部门</el-dropdown-item>
+          <el-dropdown-item v-if="!itemData.isTop">查看部门</el-dropdown-item>
+          <el-dropdown-item v-if="!itemData.isTop">删除部门</el-dropdown-item>
+        </el-dropdown-menu>
+      </template>
+    </el-dropdown>
+    1. **在点击事件中触发兄弟组件传值打开弹框**
+    commandEvent (command) {
+      switch (command) {
+        case 'add':
+          this.$bus.$emit('Addshow', true)
+          break
+      }
+    }
+```
+
+
+
+# `.native` 使用原生事件
+
+# Vue.use
+
+
+
+1. 编辑成功，要提示一下，关闭弹框清空表单数据与验证，刷新父级列表数据
+
+   注意点：在使用close事件重置表单数据时，要注意resetFields它是重置表单数据为初次渲染的值，
+
+   如果有编辑就需要特别处理
+
+```Vue
+    // 关闭表单时的处理
+    closeEvent () {
+      // 重置表单数据为初始值（初次打开dialog弹框组件时的form表单的值），移除了校验结果
+      //  第一次打开弹框是新增时，初始值就是data中定义的form
+      // 第一次打开弹框是编辑时，初始值就是当前点击项的内容
+      this.$refs.form.resetFields()
+      // 每次关闭弹框都强行重置form数据
+      this.form = {
+        name: '', //  string  非必须    部门名称
+        code: '', //  string  非必须    部门编码，同级部门不可重复
+        manager: '', //  string  非必须    负责人名称
+        introduce: '', //  string  非必须    介绍
+        pid: '' //  string  非必须    父级部门ID，当前点击的id
+      }
+    }
+```
+
+# Vue.use
+
+作用：调用插件内的一个方法，并同时可以传递Vue,和其它参数
+
+使用：
+
+```JavaScript
+// 对象写法
+Vue.use({
+  install(Vue,options){
+     // 原型挂载，全局使用vue注册
+  }
+})
+// 函数写法
+Vue.use(function(Vue,options){
+ // 原型挂载，全局使用vue注册
+})
+
+实际开发，封装一个js
+export default {
+  install(Vue,options){
+      // 原型挂载，全局使用vue注册
+      Vue.prototype.$xxx=options
+  }
+}
+使用：main.js
+导入  import xxxx from '路径'
+Vue.use(xxxx,'81期')
+
+this.$xxx的值就是81期
 ```

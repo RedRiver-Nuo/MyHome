@@ -1,11 +1,10 @@
----
-title: eslint
+title: Vue2
 date: 2022/4/21
 tags:
+
  - 笔记
 categories:
- -  eslint
----
+ -  Vue2
 
 
 ## eslint
@@ -91,10 +90,6 @@ categories:
 1. 文件名，行号，错误信息都会告诉我们
 2. 错误信息可以直接去网站确认
 
-![image-20220413182229839](https://gitee.com/westblueflower/imgs/raw/master/img/202204131822434.png)
-
-
-
 
 
 #### 规则调整
@@ -161,7 +156,7 @@ categories:
 3. 简单的页面，复杂的网页应用都能做，app，小程序也能做
 4. 通过它可以极大的提升开发效率，操纵dom-->操纵数据
 
-![image-20210111215624065](https://gitee.com/westblueflower/imgs/raw/master/img/202204021626280.png)
+
 
 
 
@@ -177,7 +172,7 @@ categories:
 4. 调整一个设置
 5. 使用
 
-![image-20220406161937843](https://gitee.com/westblueflower/imgs/raw/master/img/202204061620389.png)
+
 
 
 
@@ -381,7 +376,7 @@ const app = new Vue({
 
 - 解决某类软件开发问题的`最佳实践`
 - 被前辈们积累和总结出来,用过都说好
-- ![img](https://gitee.com/westblueflower/imgs/raw/master/img/202204041413804)
+- 
 
 名词解释-MVVM
 
@@ -408,7 +403,7 @@ const app = new Vue({
 
 **Vue中的MVVM:**
 
-![双向数据绑定](https://gitee.com/westblueflower/imgs/raw/master/img/202204041415616.png)
+
 
 - 以前工作模式： 
 - - 如果希望界面变了，数据跟着变，要自己操作dom，监听dom事件，再把dom的值赋值给数据
@@ -427,7 +422,7 @@ const app = new Vue({
 2. 从写法来看就是html标签的属性
 3. 只不过只有Vue可以解析
 
-### v-text指令 || {{插值表达式}}
+### v-text指令 || `{{插值表达式}}`
 
 > v-text： 
 >
@@ -804,9 +799,8 @@ const app = new Vue({
 
 小结:
 
-1. `dom`的原生事件，如何在行内获取事件参数?$event/event
-
-
+1. `dom`的原生事件，如何在行内获取事件参数?
+2. `$event/event`
 
 
 
@@ -814,7 +808,7 @@ const app = new Vue({
 
 > `动态`的绑定`属性`
 >
-> > 属性:写在标签内部的东西，比如src,style,class等。。
+> > 属性:写在标签内部的东西，比如`src,style,class`等。。
 >
 > [传送门:v-bind指令](https://cn.vuejs.org/v2/api/#v-bind)
 
@@ -1237,7 +1231,7 @@ const app = new Vue({
 
 #### v-for中的key
 
-> v-for时一般会设置一个key
+> `v-for`时一般会设置一个`key`
 
 为什么要Key:
 
@@ -1246,7 +1240,7 @@ const app = new Vue({
 
 
 
-key使用注意
+`key`使用注意
 
 1. `key` 的值只能是字符串或数字类型
 2. `key` 的值必须具有唯一性(即:`key` 的值不能重复)
@@ -1335,7 +1329,7 @@ key使用注意
 
 
 
-### v-model指令
+### `v-model`指令
 
 > 在`表单`控件或组件上创建双向绑定
 >
@@ -1879,7 +1873,7 @@ watch: {
 
 
 
-### filters(过滤器):{}
+### `filters`(过滤器):{}
 
 > 过滤器可以对渲染的数据进行处理
 >
@@ -1893,7 +1887,7 @@ watch: {
 
 语法:
 
-1. 可以用在属性和{{}}中，常用于{{}}
+1. 可以用在属性和 `{{}} `中，常用于`{{}}`
 2. 可以串连，可以传递参数
 3. `|`也叫管道符
 
@@ -4025,27 +4019,27 @@ export default {
 
 
 
-### $nextTick方法
+### `$nextTick`方法
 
 > 获取Vue更新之后的Dom元素，推荐的方法是`$nextTick`
 >
 > [传送门:异步更新队列](https://cn.vuejs.org/v2/guide/reactivity.html#%E5%BC%82%E6%AD%A5%E6%9B%B4%E6%96%B0%E9%98%9F%E5%88%97)
 
 1. Vue更新Dom是异步的
-2. 了解$nextTick的使用方法
+2. 了解`$nextTick`的使用方法
 
 
 
 异步更新
 
 1. 参考笔记中的官网地址，确认异步更新
-2. 找到$nextTick的使用语法
+2. 找到`$nextTick`的使用语法
 
 
 
 测试
 
-1. 利用$nextTick调优上一节的延迟代码
+1. 利用`$nextTick`调优上一节的延迟代码
 2. 测试结果
 
 ```vue
@@ -4101,7 +4095,7 @@ export default {
 1. 咱们目前掌握的知识能不能实现这个效果?
 2. 比如，动态组件里面切换的组件如果是全屏大小?
 3. 可以，但是功能有限，如果要实现更为复杂的效果，比如数据传递，页面访问限制。。。。就不太好实现了
-4. 所以使用来开发SPA用的不是动态组件，而是咱们下一节要学习的vue-router
+4. 所以使用来开发SPA用的不是动态组件，而是咱们下一节要学习的`vue-router`
 
 
 
